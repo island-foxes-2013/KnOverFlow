@@ -20,6 +20,7 @@ group :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'simplecov', :require => false
 end
 
 gem 'pry-rails', :group => :development
