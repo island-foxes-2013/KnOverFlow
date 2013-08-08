@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
   
-  def create 
+  def create # need error messaging / validations on model
     @question = Question.new(params[:question])
     if @question.save
       # do something

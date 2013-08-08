@@ -24,7 +24,7 @@ feature "User create a new question" do
     fill_in "question title", { with: '' }
     fill_in "question content", { with: question.content } # testing that it can't be empty
     click_on "Create Question"
-    expect(page).to have_contect("Error!")
+    expect(page).to have_content("Error!")
   end
 
   scenario "that is valid" do

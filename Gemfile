@@ -21,7 +21,7 @@ group :development, :test do
   gem 'capybara'
   gem 'turn', '< 0.8.3' # pretty printing for tests
   gem 'guard-rspec' # auto-run tests
-  gem 'ruby_gntp' # growl notify
+  # gem 'ruby_gntp' # growl notify
   gem 'rb-fsevent' #notifies when files change
 end
 
