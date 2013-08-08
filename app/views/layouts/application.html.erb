@@ -3,18 +3,24 @@
 <head>
   <title>KnOverFlow</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+  <%= javascript_include_tag "bootstrap" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <% if current_user %>
-  <!-- # test this!!!! -->
-  <%= button_to "log out", session_path(current_user), {method: :delete} %>
-  <% else %>
-    <!-- # test this!!!! -->
-  <%= link_to "sign in/sign up", new_user_path %>
-  <% end %>
-<%= yield %>
-
-</body>
+  <body>
+    <div class="navbar">
+      <ul class="nav navbar-nav">
+      <li id='brand'><%= link_to "Welcome KnowItAll", root_path %></li>
+        <% if session[:user_id] %>
+          <li id='nav_user'><a>: <%= User.find(session[:user_id]).name %></a></li>
+          <li><%= link_to "log out", session_path(current_user), {method: :delete} %></li>
+          <li><%= link_to "Ask a Question", new_question_path %></li>
+        <% else %>
+          <li><%= link_to "sign in/sign up", new_user_path %>
+        <% end %>
+      </ul>
+    </div>
+    <%= yield %>
+  </body>
 </html>

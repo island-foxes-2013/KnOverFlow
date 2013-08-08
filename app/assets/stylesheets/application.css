@@ -11,3 +11,24 @@
  *= require_self
  *= require_tree .
  */
+
+
+ #brand a{
+  color: orange !important;
+  font-size: 20px;
+}
+
+ul li a {
+  color: #3366FF !important;
+  font-size: 17px;
+}
+
+ul li div {
+  background-color: #3366FF !important;
+}
+
+#nav_user a{
+  color: #CC6600 !important;
+  padding-left: 0px;
+  margin-right: 30px;
+}
