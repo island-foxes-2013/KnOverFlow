@@ -21,7 +21,7 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password_confirmation)}
 
-  describe "when email test is invalid" do
+  describe "when email format is invalid" do
     it "should be invalid" do
       emails = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com]
       emails.each do |invalid_email|
@@ -59,5 +59,16 @@ describe User do
   describe "with a password that's too short" do
     let(:user) { user.password = @user.password_confirmation = "a" * 5 }
     it { should be_invalid }
+  end
+
+  describe "when email address is not unique" do
+    # let(:user) { user.dup }
+    it "should not be valid" do
+      user.save
+      dup_user = user.dup
+      dup_user.email = user.email.upcase
+      dup_user.save
+      dup_user.should_not be_valid
+    end
   end
 end
