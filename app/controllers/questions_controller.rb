@@ -11,9 +11,13 @@ class QuestionsController < ApplicationController
   def create # need error messaging / validations on model
     @question = Question.new(params[:question])
     if @question.save
-      # do something
+      redirect_to question_path(@question)
     else
       render 'new'
     end
+  end
+
+  def show
+    @question = Question.find(params[:id])
   end
 end

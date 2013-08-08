@@ -1,2 +1,15 @@
 <h1>Welcome to KnOverflow</h1>
-<p>some questions</p>
+<br />
+<% %>
+<ul>
+ <% @questions.each do |question| %>
+ <li><a href="#"><%= question.title %></a></li>
+ <% end %>
+ </ul>
+
+ <% if current_user %>
+ <%= link_to "Create a Question", new_question_path %>
+ <% end %>
+
+
+
