@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
 
-  def new #because rails is auto directing to 'new'
+  def new
   end
 
-  def create #creates a new session
+  def create
     @user = User.find_by_email(params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password]) 
       session[:user_id] = @user.id
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.clear
-    redirect_to new_user_path, :notice => "Logged Out!"
+    redirect_to root_path, :notice => "Logged Out!"
   end
 
 end
