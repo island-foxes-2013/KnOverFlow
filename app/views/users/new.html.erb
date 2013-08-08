@@ -1,6 +1,9 @@
 <h1>Sign Up!</h1>
   <div>
     <%= form_for User.new do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
       <%= f.label :email %>
       <%= f.text_field :email %>
 
@@ -11,7 +14,7 @@
       <%= f.password_field :password_confirmation %>
 
       <%= f.submit "Sign Up" %>
-    <%= end %>
+    <% end %>
   </div>
 
  <h1> Log In! </h1>
@@ -24,5 +27,5 @@
       <%= f.password_field :password %>
 
       <%= f.submit "Sign In" %>
-    <%= end %>
+    <% end %>
    </div>    
