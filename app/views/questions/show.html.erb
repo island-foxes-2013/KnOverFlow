@@ -1,14 +1,15 @@
 <h1><%= @question.title %></h1>
 <h3><%= @question.content %></h3>
 <br />
-
+<% if @question.answers.any? %>
 <h4><%= @question.answers.count %> answers below:</h4>
 <ul>
- <% Answers.find_by_question_id(@question.id).each do |answer| %>
+ <% @question.answers.all.each do |answer| %>
  <li><%= answer.content %></li>
  <% end %>
  </ul>
+ <% end %>
 
  <% if current_user %>
- <%= link_to "Write an answer!", new_question_path %>
+ <%= link_to "Write an answer!", new_question_answer_path(@question) %>
  <% end %>
