@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'debugger'
 
@@ -21,6 +21,11 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov', :require => false
+  gem 'capybara'
+  gem 'turn', '< 0.8.3' # pretty printing for tests
+  gem 'guard-rspec' # auto-run tests
+  gem 'ruby_gntp' # growl notify
+  gem 'rb-fsevent' #notifies when files change
 end
 
 gem 'pry-rails', :group => :development
