@@ -14,9 +14,6 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
-end
-
-group :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
