@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to user_path
     else
       flash[:error] = "Please try again"
       render 'new'
@@ -18,4 +18,3 @@ class UsersController < ApplicationController
   def show
   end
 end
-
