@@ -1,10 +1,11 @@
 <h1><%= @question.title %></h1>
 <h3><%= @question.content %></h3>
 <br />
+
 <h4><%= @question.answers.count %> answers below:</h4>
 <ul>
  <% Answers.find_by_question_id(@question.id).each do |answer| %>
- <li><a href="#"><%= answer.content %></a></li>
+ <li><%= answer.content %></li>
  <% end %>
  </ul>
 
