@@ -21,7 +21,7 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem 'simplecov', :require => false
+  gem 'simplecov'
   gem 'capybara'
   gem 'turn', '< 0.8.3' # pretty printing for tests
   gem 'guard-rspec' # auto-run tests
