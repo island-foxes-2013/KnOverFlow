@@ -1,0 +1,6 @@
+<h1>Post a new Comment!</h1>
+<%= form_for [@question, @comment] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit 'Submit', class: "btn btn-primary btn-sm" %>
+<% end %>
