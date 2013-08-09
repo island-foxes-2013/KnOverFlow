@@ -1,15 +1,33 @@
-<h1><%= @question.title %></h1>
-<h3><%= @question.content %></h3>
+<div>
+  <h1><%= @question.title %></h1>
+  <h3><%= @question.content %></h3>
+  <p>Comments:</p>
+  <% @question.comments.all.each do |comment| %>
+  <%= comment.content%>
+  <% end %>
+  <br />
+  <%= link_to "Make a comment!", new_question_comment_path(@question) %>
+</div>
 <br />
-<% if @question.answers.any? %>
-<h4><%= @question.answers.count %> answers below:</h4>
-<ul>
- <% @question.answers.all.each do |answer| %>
- <li><%= answer.content %></li>
- <% end %>
+<div>
+  <% if @question.answers.any? %>
+  <h4><%= @question.answers.count %> answers below:</h4>
+  <ul>
+   <% @question.answers.all.each do |answer| %>
+   <li><h5><%= answer.content %></h5></li>
+   <br />
+  <p>Comments:</p>
+   <% answer.comments.all.each do |comment| %>
+   <p><%= comment.content %></p>
+   <% end %>
+
+   <% end %>
+  <%= link_to "Make a comment!", new_answer_comment_path(answer) %>
  </ul>
  <% end %>
+    <br />
+</div>
 
- <% if current_user %>
- <%= link_to "Write an answer!", new_question_answer_path(@question) %>
- <% end %>
+<% if current_user %>
+<%= link_to "Write an answer!", new_question_answer_path(@question) %>
+<% end %>
