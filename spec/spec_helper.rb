@@ -32,4 +32,13 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  config.include FactoryGirl::Syntax::Methods
+end
+
+def log_in
+  user = create(:user)
+  visit login_path
+  fill_in :session_email, with: user.email
+  fill_in :session_password, with: user.password
+  click_button 'Log In'
 end

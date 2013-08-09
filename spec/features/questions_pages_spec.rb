@@ -18,7 +18,7 @@ feature "User create a new question" do
     visit new_question_path
   end
 
-  let(:question) { FactoryGirl.build(:question) }
+  let(:question) { create(:question) }
 
   scenario "that is invalid" do
     fill_in "question title", { with: '' }

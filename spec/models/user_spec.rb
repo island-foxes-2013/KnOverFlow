@@ -14,7 +14,7 @@ require 'spec_helper'
 
 describe User do
   
-  let(:user) { FactoryGirl.build(:user) }
+  let(:user) { create(:user) }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
@@ -62,7 +62,6 @@ describe User do
   end
 
   describe "when email address is not unique" do
-    # let(:user) { user.dup }
     it "should not be valid" do
       user.save
       dup_user = user.dup

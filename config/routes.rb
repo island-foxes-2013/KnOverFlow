@@ -9,5 +9,4 @@ KnOverFlow::Application.routes.draw do
   root to: 'questions#index'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-
 end
