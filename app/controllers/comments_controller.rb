@@ -1,16 +1,16 @@
-class CommentsController < ActionController::Base
+class CommentsController < ApplicationController
 
-  def new
+  def new 
     @comment = Comment.new
     @question = Question.find(params[:question_id])
-  end
+  end 
 
-  # def new
+  # def new 
   #   @answer = Answer.new
   #   @question = Question.find(params[:question_id])
-  # end
+  # end 
 
   def create
-  	p params    
-  end
+  p params
+  end 
 end
