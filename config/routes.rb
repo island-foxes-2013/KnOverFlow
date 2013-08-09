@@ -1,5 +1,4 @@
 KnOverFlow::Application.routes.draw do
-
   resources :questions do
   	resources :comments, only: [:new, :create]
     resources :answers, only: [:new, :create]
