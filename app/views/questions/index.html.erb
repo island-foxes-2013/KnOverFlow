@@ -1,2 +1,11 @@
 <h1>Welcome to KnOverflow</h1>
-<p>some questions</p>
+<br />
+<ul>
+ <% @questions.each do |question| %>
+ <li><a href="/questions/<%= question.id %>"><%= question.title %></a></li>
+ <% end %>
+ </ul>
+
+
+
+
