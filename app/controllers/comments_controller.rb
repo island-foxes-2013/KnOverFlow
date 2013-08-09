@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
 
   def new 
-    @comment = Comment.new
-    @question = Question.find(params[:question_id])
+    if params.has_key?('question_id')
+      @comment = Comment.new
+      @commentable = Question.find(params[:question_id])
+    elsif params.has_key?('answer_id')
+      @comment = Comment.new
+      @commentable = Answer.find(params[:answer_id])
+    end
   end 
 
   # def new 
@@ -11,6 +16,12 @@ class CommentsController < ApplicationController
   # end 
 
   def create
-  p params
+    if params.has_key?('question_id')
+      Question.find(params[:question_id]).comments.create(content: params[:comment], user_id: session[:id])
+      redirect_to question_path(params[:question_id])
+    elsif params.has_key?('answer_id')
+      Answer.find(params[:answer_id]).comments.create(content: params[:comment], user_id: session[:id])
+      redirect_to question_path(params[:answer_id])
+    end
   end 
 end
