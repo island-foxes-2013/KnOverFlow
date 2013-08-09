@@ -17,17 +17,7 @@
   <% if @question.answers.any? %>
   <h4><%= @question.answers.count %> answers below:</h4>
       <% @question.answers.all.each do |answer| %>
-        <div id='answer_display'>
-          <li><h5><%= answer.content %></h5></li>
-          <br/>
-          <p>Comments:</p>
-          <hr />
-          <% answer.comments.all.each do |comment| %>
-            <p><%= comment.content %></p>
-            <hr />
-          <% end %>
-          <%= link_to "Make a comment!", new_answer_comment_path(answer) %>
-        </div>
+        <%= render partial: 'answers/answer', locals: {answer: answer} %>
       <% end %>
   <% end %>
   <br />
