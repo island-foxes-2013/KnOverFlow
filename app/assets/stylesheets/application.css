@@ -32,3 +32,20 @@ ul li div {
   padding-left: 0px;
   margin-right: 30px;
 }
+
+#question_display {
+	width: 600px;
+	padding: 20px;
+	background-color: rgba(184,46,0,0.3);
+	border-radius: 10px;
+	margin-left: 10%;
+}
+
+#answer_display {
+	width: 600px;
+	padding: 20px;
+	background-color: rgba(184,138,0,0.3);
+	border-radius: 10px;
+	margin-bottom: 20px;
+	margin-left: 10%;
+}
