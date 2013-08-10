@@ -49,14 +49,18 @@ def populate_comments
 	questions.each do |question|
 		n = rand(0..7)
 		n.times do |comments|
-			question.comments.create(content: Faker::Lorem.sentences(sentence_count = 1), user_id: user_ids.sample)
+			comment = question.comments.build(content: Faker::Lorem.sentences(sentence_count = 1))
+      comment.user_id = user_ids.sample
+      comment.save
     end
   end
   answers = Answer.all
 	answers.each do |answer|
 		n = rand(0..4)
 		n.times do |comments|
-			answer.comments.create(content: Faker::Lorem.sentences(sentence_count = 1), user_id: user_ids.sample)
+			comment = answer.comments.build(content: Faker::Lorem.sentences(sentence_count = 1))
+      comment.user_id = user_ids.sample
+      comment.save
     end
   end
 end
