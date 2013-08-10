@@ -32,7 +32,9 @@ def populate_answers
 	questions = Question.all
 	questions.each do |question|
 		3.times do |answer|
-			question.answers.create(content: Faker::Lorem.sentences(sentence_count = 3), user_id: user_ids.sample)
+			question.answers.build(content: Faker::Lorem.sentences(sentence_count = 3))
+      question.user_id = user_ids.sample
+      question.save
     end
   end
 end

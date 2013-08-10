@@ -4,4 +4,6 @@ class Question < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   attr_accessible :title, :content
+
+  validates :title, :content, :user, presence: true
 end
