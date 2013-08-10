@@ -9,11 +9,9 @@ class QuestionsController < ApplicationController
   end
   
   def create # need error messaging / validations on model
-    p "these are the params #{params}"
     @question = Question.new(params[:question])
     @question.user = current_user
     if @question.save
-      p "it's here when question is created"
       redirect_to question_path(@question)
     else
       flash[:error] = "Error!"

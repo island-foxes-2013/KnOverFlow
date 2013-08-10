@@ -194,7 +194,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
-  capybara (~> 2.1)
+  capybara
   compass-rails
   debugger
   factory_girl_rails
