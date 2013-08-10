@@ -1,0 +1,9 @@
+<h1>Post an Answer Here!</h1>
+
+<%= flash[:error] if flash[:error] %>
+<%= form_for [question, question.answers.build] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content, placeholder: "answer content" %>
+
+  <%= f.submit %>
+<% end %>

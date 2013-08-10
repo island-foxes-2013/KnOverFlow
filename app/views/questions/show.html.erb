@@ -8,10 +8,12 @@
     <% end %>
   </ul>
   <br />
-  <%= render partial: '/comments/new', :locals => {:commentable => @question, :comment => Comment.new} %>
+  <%= render partial: '/comments/new', locals: {commentable: @question, comment: Comment.new} %>
 </div>
 <br />
-
+<div id='create_answer'>
+  <%= render partial: 'answers/form', locals: {question: @question} %>
+</div>
   <% if @question.answers.any? %>
   <h4><%= @question.answers.count %> answers below:</h4>
       <% @question.answers.all.each do |answer| %>
@@ -30,6 +32,6 @@
   <% end %>
   <br />
   
-  <% if current_user %>
-  <%= link_to "Write an answer!", new_question_answer_path(@question) %>
-  <% end %>
+  <%# if current_user %>
+  <%#= link_to "Write an answer!", new_question_answer_path(@question) %>
+  <%# end %>
