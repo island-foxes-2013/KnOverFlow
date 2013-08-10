@@ -3,11 +3,6 @@ class AnswersController < ApplicationController
   def index
   end
 
-  # def new
-  #   @answer = Answer.new
-  #   @question = Question.find(params[:question_id])
-  # end
-
   def create
     answer = Answer.new(params[:answer])
     answer.user_id = current_user.id
@@ -26,6 +21,4 @@ class AnswersController < ApplicationController
 
   def destroy
   end
-
-
 end

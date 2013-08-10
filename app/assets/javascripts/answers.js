@@ -1,9 +1,14 @@
+$(document).ready(function() {
+  AnswersController.bindEvents();
+});
+
 var AnswersController = {
   bindEvents: function() {
     // ajax:beforeSend (before form is submitted)
     // ajax:success (when server returns successfully)
     // ajax:error (when server returns unsuccessfully)
     // ajax:complete (when server returns no matter what)
+    
     // listen for something other than document
     $(document).on('ajax:beforeSend', 'form#new_answer', this.beforeSend);
     $(document).on('ajax:success', 'form#new_answer', this.onSuccess);
@@ -32,10 +37,3 @@ var AnswersController = {
     // $(e.target).after("<div class='error'>"+xhr.responseJSON.messages.join(',')+"</div>");
   }
 };
-
-
-$(document).ready(function() {
-
-  AnswersController.bindEvents();
-
-});

@@ -4,5 +4,8 @@
   <%= f.label :content %>
   <%= f.text_field :content, placeholder: "answer content" %>
   <%= f.submit %>
-  <% if answer.errors[:content] %><span class="errors"><%= answer.errors[:content].join(',') %></span><% end %>
+  <% if answer.errors[:content] %>
+    <span class="errors">
+      <%= answer.errors[:content].join(',') %>
+    </span><% end %>
 <% end %>
