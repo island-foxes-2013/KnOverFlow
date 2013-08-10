@@ -14,8 +14,11 @@ class AnswersController < ApplicationController
     @answer.question_id = params[:question_id]
     if @answer.save
       #@answers = Answer.find_by_question_id(params[:question_id])
-      
-      redirect_to question_path(@answer.question_id)
+      #render partial: 'answer', locals: { answer: @answer }
+      render json: {
+        html: render_to_string(partial: 'answer', locals: { answer: @answer })
+      }
+      # redirect_to question_path(@answer.question_id)
     else
       flash[:error] = "Error!"
       redirect_to question_path(@answer.question_id)

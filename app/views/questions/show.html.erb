@@ -16,12 +16,13 @@
 </div>
   <% if @question.answers.any? %>
   <h4><%= @question.answers.count %> answers below:</h4>
+      <div class="answers">
       <% @question.answers.all.each do |answer| %>
         <%= render partial: 'answers/answer', locals: {answer: answer} %>
       <% end %>
-  <% end %>
+      </div>
+    <% end %>
   <br />
-  
-  <%# if current_user %>
+    <%# if current_user %>
   <%#= link_to "Write an answer!", new_question_answer_path(@question) %>
   <%# end %>

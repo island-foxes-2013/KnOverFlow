@@ -41,7 +41,7 @@ ul li div {
 	margin-left: 10%;
 }
 
-#answer_display {
+.answer_display {
 	width: 600px;
 	padding: 20px;
 	background-color: rgba(184,138,0,0.3);
