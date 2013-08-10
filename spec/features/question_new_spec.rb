@@ -13,7 +13,7 @@ feature "User creates a new question" do
   context "that is invalid" do 
     scenario "when content is missing" do
       fill_in "Title", { with: question.title }
-      fill_in "Content", { with: '' } 
+      fill_in "Content", { with: '' }
       click_on "Create Question"
       expect(page).to have_content("Error!")
     end
