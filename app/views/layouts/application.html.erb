@@ -14,9 +14,10 @@
         <% if session[:user_id] %>
           <li id='nav_user'><a>: <%= User.find(session[:user_id]).name %></a></li>
           <li><%= link_to "log out", session_path(current_user), {method: :delete} %></li>
-          <li><%= link_to "Ask a Question", new_question_path %></li>
+          <li><%= link_to "ask a question", new_question_path %></li>
         <% else %>
-          <li><%= link_to "sign in/sign up", new_user_path %>
+          <li><%= link_to "sign up", new_user_path %>
+          <li><%= link_to "sign in", new_session_path %>
         <% end %>
       </ul>
     </div>
