@@ -12,7 +12,7 @@
 </div>
 <br />
 <div id='create_answer'>
-  <%= render partial: 'answers/form', locals: {question: @question} %>
+  <%= render partial: 'answers/form', locals: {answer: @question.answers.build, question: @question} %>
 </div>
   <% if @question.answers.any? %>
   <h4><%= @question.answers.count %> answers below:</h4>

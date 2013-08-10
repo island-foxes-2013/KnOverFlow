@@ -1,7 +1,12 @@
 <h1>Post an Answer Here!</h1>
 
-<%= flash[:error] if flash[:error] %>
-<%= form_for [question, question.answers.build],remote: true do |f| %>
+<%  if answer.errors %>
+  <div class="errors">
+    <%= answer.errors.full_messages.join("<br>") %>
+  </div>
+<% end %>
+<%# RENDER YOUR ERRORS ON THE answer OBJECT %>
+<%= form_for [question, answer],remote: true do |f| %>
   <%= f.label :content %>
   <%= f.text_field :content, placeholder: "answer content" %>
 
