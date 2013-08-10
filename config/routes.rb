@@ -17,9 +17,9 @@ KnOverFlow::Application.routes.draw do
   end
 
   # this likely needs to be removed
-  # resources :answers, except: [:new, :create] do
-  # 	resources :comments, only: [:new, :create]
-  # end
+  resources :answers, except: [:new, :create] do
+  	resources :comments, only: [:new, :create]
+  end
 
   root to: 'questions#index'
   resources :users
