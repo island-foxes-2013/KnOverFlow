@@ -23,7 +23,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'capybara'
+  gem 'capybara', '~> 2.1'
   gem 'turn', '< 0.8.3' # pretty printing for tests
   gem 'guard-rspec' # auto-run tests
   gem 'launchy'

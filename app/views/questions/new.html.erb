@@ -1,7 +1,14 @@
 <h1>Post a Question Here!</h1>
-<%= flash[:error] if flash[:error] %>
-<%= form_for @question do |f| %>
-  <%= f.text_field :title, placeholder: "question title" %>
-  <%= f.text_area :content, placeholder: "question content" %>
-  <%= f.submit %>
+<% if current_user %>
+  <%= flash[:error] if flash[:error] %>
+  <%= form_for @question do |f| %>
+    
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+   
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+   
+    <%= f.submit %>
+  <% end %>
 <% end %>

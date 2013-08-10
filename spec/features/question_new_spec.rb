@@ -8,20 +8,19 @@ feature "User creates a new question" do
     visit new_question_path
   end
 
-  let(:question) { create(:question) }
-
+  let!(:question) { create(:question, user: create(:user)) }
 
   context "that is invalid" do 
     scenario "when content is missing" do
-      fill_in "question title", { with: '' }
-      fill_in "question content", { with: question.content } 
+      fill_in "Title", { with: question.title }
+      fill_in "Content", { with: '' } 
       click_on "Create Question"
       expect(page).to have_content("Error!")
     end
 
     scenario "when title is missing" do
-      fill_in "question title", { with: question.title }
-      fill_in "question content", { with: '' } 
+      fill_in "Title", { with: '' }
+      fill_in "Content", { with: question.content } 
       click_on "Create Question"
       expect(page).to have_content("Error!")
     end
@@ -29,8 +28,8 @@ feature "User creates a new question" do
 
   context "that is valid" do
     scenario "when content and title are included" do 
-      fill_in "question title", { with: question.title }
-      fill_in "question content", { with: question.content } 
+      fill_in "Title", { with: question.title }
+      fill_in "Content", { with: question.content } 
       click_on "Create Question"
       expect(page).to have_content(question.title)
     end

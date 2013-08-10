@@ -38,7 +38,7 @@ end
 def log_in
   user = create(:user)
   visit new_session_path
-  fill_in :session_email, with: user.email
-  fill_in :session_password, with: user.password
+  fill_in "Email", with: user.email
+  fill_in "Password", with: user.password
   click_button 'Sign In'
 end
