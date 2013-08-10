@@ -1,0 +1,44 @@
+#brand a{
+  color: orange !important;
+  font-size: 20px;
+}
+
+ul li a {
+  color: #3366FF !important;
+  font-size: 17px;
+}
+
+ul li div {
+  background-color: #3366FF !important;
+}
+
+#nav_user a{
+  color: #CC6600 !important;
+  padding-left: 0px;
+  margin-right: 30px;
+}
+
+#question_display {
+  width: 600px;
+  padding: 20px;
+  background-color: rgba(184,46,0,0.3);
+  border-radius: 10px;
+  margin-left: 10%;
+}
+
+.answer_display {
+  width: 600px;
+  padding: 20px;
+  background-color: rgba(184,138,0,0.3);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-left: 10%;
+}
+
+.errors {
+  color: red;
+}
+
+.field_with_errors {
+  display: inline;
+}

@@ -4,13 +4,14 @@ var AnswersController = {
     // ajax:success (when server returns successfully)
     // ajax:error (when server returns unsuccessfully)
     // ajax:complete (when server returns no matter what)
+    // listen for something other than document
     $(document).on('ajax:beforeSend', 'form#new_answer', this.beforeSend);
     $(document).on('ajax:success', 'form#new_answer', this.onSuccess);
     $(document).on('ajax:error', 'form#new_answer', this.onError);
   },
 
   beforeSend: function(e) {
-    $(e.target).parent().find('.errors').remove();
+    $(e.target).find('.errors').remove();
   },
 
   onSuccess: function(e, response, status, xhr) {

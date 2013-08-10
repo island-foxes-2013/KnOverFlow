@@ -1,14 +1,8 @@
 <h1>Post an Answer Here!</h1>
 
-<%  if answer.errors %>
-  <div class="errors">
-    <%= answer.errors.full_messages.join("<br>") %>
-  </div>
-<% end %>
-<%# RENDER YOUR ERRORS ON THE answer OBJECT %>
 <%= form_for [question, answer],remote: true do |f| %>
   <%= f.label :content %>
   <%= f.text_field :content, placeholder: "answer content" %>
-
   <%= f.submit %>
+  <% if answer.errors[:content] %><span class="errors"><%= answer.errors[:content].join(',') %></span><% end %>
 <% end %>
