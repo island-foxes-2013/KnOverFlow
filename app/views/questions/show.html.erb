@@ -8,7 +8,7 @@
     <% end %>
   </ul>
   <br />
-  <%= link_to "Make a comment!", new_question_comment_path(@question) %>
+  <%= render partial: '/comments/new', :locals => {:commentable => @question, :comment => Comment.new} %>
 </div>
 <br />
 
