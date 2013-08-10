@@ -10,7 +10,7 @@
   <body>
     <div class="navbar">
       <ul class="nav navbar-nav">
-      <li id='brand'><%= link_to "Welcome KnowItAll", root_path %></li>
+      <li id='brand'><%= link_to "welcome KnowItAll", root_path %></li>
         <% if session[:user_id] %>
           <li id='nav_user'><a>: <%= User.find(session[:user_id]).name %></a></li>
           <li><%= link_to "log out", session_path(current_user), {method: :delete} %></li>
