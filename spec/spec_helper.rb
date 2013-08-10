@@ -38,10 +38,7 @@ end
 def log_in
   user = create(:user)
   visit new_user_path
-  p "*" * 100
   fill_in 'Login email', with: user.email
   fill_in 'Login password', with: user.password
-  p 'X' * 100
-
   click_button 'Sign In'
 end

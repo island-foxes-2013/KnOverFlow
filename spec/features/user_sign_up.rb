@@ -16,7 +16,7 @@ feature "user sign up" do
   end
 
   scenario "user should be logged in after they sign up" do
-    log_in
+    pending
     # expect(:user).to be { log_in }
   end
 
