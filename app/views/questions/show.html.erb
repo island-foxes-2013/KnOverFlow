@@ -3,7 +3,7 @@
   <h3><%= @question.content %></h3>
     <%= render partial: '/comments/comments', locals: {commentable: @question } %>
     <br/>
-  <%= render partial: '/comments/form', locals: {commentable: @question, comment: @question.comments.build} %>
+  <%#= render partial: '/comments/form', locals: {commentable: @question, comment: @question.comments.build} %>
 </div>
 <br />
 <span id='click_new_answer'><%= link_to 'answer question', new_question_answer_path(@question), remote: true %>
