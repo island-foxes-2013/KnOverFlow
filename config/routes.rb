@@ -11,7 +11,8 @@ KnOverFlow::Application.routes.draw do
   # end
   # resources :questions, only [:show]
 
-  resources :questions do
+  resources :questions do 
+    resources :votes, only: [:new, :create, :update]
     resources :comments, only: [:new, :create, :edit, :destroy]
     resources :answers, only: [:new, :create, :edit, :destroy] 
   end
@@ -19,6 +20,7 @@ KnOverFlow::Application.routes.draw do
   # this likely needs to be removed
   resources :answers, except: [:new, :create] do
   	resources :comments, only: [:new, :create]
+    resources :votes, only: [:new, :create, :update]
   end
 
   root to: 'questions#index'
