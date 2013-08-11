@@ -23,16 +23,22 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'capybara'
   gem 'turn', '< 0.8.3' # pretty printing for tests
   gem 'guard-rspec' # auto-run tests
   gem 'launchy'
   # gem 'ruby_gntp' # growl notify
   gem 'rb-fsevent' #notifies when files change
+  gem 'spork'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  gem "capybara-webkit"
 end
 
 gem 'pry-rails', :group => :development
 
-group :production do
-  gem 'pg'
+gem 'pg'
+
+group :test do
+  gem 'capybara'
+  gem 'email_spec'
 end
