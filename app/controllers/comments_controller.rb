@@ -20,18 +20,18 @@ class CommentsController < ApplicationController
           html: render_to_string(partial: 'comments', locals: {commentable: question})
         }
       else
-        puts "Failed to save comment for question"
+        puts "Failed to save comment for Question"
       end
     elsif params.has_key?('answer_id')
       answer = Answer.find(params[:answer_id])
-      answer = answer.comments.new(content: params[:comment][:content])
-      answer.user_id = current_user.id
+      comment = answer.comments.new (params[:comment])
+      comment.user_id = current_user.id
       if comment.save
         render json: {
           html: render_to_string(partial: 'comments', locals: { commentable: answer})
         }
       else
-        puts "Failed to save comment for answer"
+        puts "Failed to save comment for Answer"
       end
     end
   end 
