@@ -18,11 +18,11 @@ describe Vote do
   let(:question) { FactoryGirl.build(:question) }
   let(:answer) { FactoryGirl.build(:answer) }
   let(:vote)   { question.votes.build(user_id: user.id) }
-  
+
   context "#new" do
     it "should allow mass-assignment on up_voted" do
       expect {
-        vote = Vote.new(vote: 1)
+        vote = Vote.new(up_voted: true)
       }.to_not raise_error
     end
 
@@ -74,8 +74,13 @@ describe Vote do
     end
 
     it "requires a valid vote" do
+<<<<<<< HEAD
       vote.up_voted = nils
       expect(comment).not_to be_valid
+=======
+      vote.up_voted = nil
+      expect(vote).not_to be_valid
+>>>>>>> master
     end
   end
   

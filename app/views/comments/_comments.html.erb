@@ -1,0 +1,8 @@
+<div class='comments_display'>
+  <p>Comments:</p>
+  <ul>
+  <% commentable.comments.all.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
+</ul>
+</div>

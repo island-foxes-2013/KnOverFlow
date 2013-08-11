@@ -11,14 +11,28 @@ class CommentsController < ApplicationController
   end 
 
   def create
-    p params[:comment]
     if params.has_key?('question_id')
-      Question.find(params[:question_id]).comments.create(content: params[:comment][:content], user_id: session[:id])
-      redirect_to question_path(params[:question_id])
+      question = Question.find(params[:question_id])
+      comment = question.comments.new(params[:comment])
+      comment.user_id = current_user.id
+      if comment.save
+        render json: {
+          html: render_to_string(partial: 'comments', locals: {commentable: question})
+        }
+      else
+        puts "Failed to save comment for Question"
+      end
     elsif params.has_key?('answer_id')
       answer = Answer.find(params[:answer_id])
-      answer.comments.create(content: params[:comment][:content], user_id: session[:id])
-      redirect_to question_path(answer.question_id)
+      comment = answer.comments.new (params[:comment])
+      comment.user_id = current_user.id
+      if comment.save
+        render json: {
+          html: render_to_string(partial: 'comments', locals: { commentable: answer})
+        }
+      else
+        puts "Failed to save comment for Answer"
+      end
     end
   end 
 end

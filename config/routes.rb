@@ -11,10 +11,10 @@ KnOverFlow::Application.routes.draw do
   # end
   # resources :questions, only [:show]
 
-  resources :questions do
-    resources :comments, only: [:new, :create]
-    resources :answers, only: [:new, :create] 
+  resources :questions do 
     resources :votes, only: [:new, :create, :update]
+    resources :comments, only: [:new, :create, :edit, :destroy]
+    resources :answers, only: [:new, :create, :edit, :destroy] 
   end
 
   # this likely needs to be removed

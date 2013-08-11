@@ -1,19 +1,17 @@
 <div id='question_display'>
   <h1><%= @question.title %></h1>
   <h3><%= @question.content %></h3>
-  <p>Comments:</p>
-  <ul>
-    <% @question.comments.all.each do |comment| %>
-    <li><%= comment.content%></li>
-    <% end %>
-  </ul>
-  <br />
-  <%= render partial: '/comments/new', locals: {commentable: @question, comment: Comment.new} %>
+    <%= render partial: '/comments/comments', locals: {commentable: @question } %>
+    <br/>
+  <%= render partial: '/comments/form', locals: {commentable: @question, comment: @question.comments.build} %>
 </div>
 <br />
+<span id='click_new_answer'><%= link_to 'answer question', new_question_answer_path(@question), remote: true %>
 <div id='create_answer'>
-  <%= render partial: 'answers/form', locals: {answer: @question.answers.build, question: @question} %>
+  
+  <%#= render partial: 'answers/form', locals: {answer: @question.answers.build, question: @question} %>
 </div>
+</span>
   <% if @question.answers.any? %>
   <h4><%= @question.answers.count %> answers below:</h4>
       <div class="answers">
@@ -23,6 +21,3 @@
       </div>
     <% end %>
   <br/>
-    
-  <%#= link_to "Write an answer!", new_question_answer_path(@question) %>
-  <%# end %>
