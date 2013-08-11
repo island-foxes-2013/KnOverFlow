@@ -33,10 +33,14 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
   config.include FactoryGirl::Syntax::Methods
+  config.after do
+    if example.metadata[:type] == :feature and example.exception.present?
+      save_and_open_page
+    end
+  end
 end
 
-def log_in
-  user = create(:user)
+def log_in(user)
   visit new_session_path
   fill_in "Email", with: user.email
   fill_in "Password", with: user.password

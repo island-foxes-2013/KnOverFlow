@@ -59,7 +59,7 @@ describe Comment do
 
   context "#save" do
     it "requires a valid user" do
-      comment = FactoryGirl.build(:comment, content: "DO A BARREL ROLE", commentable_id: question, commentable_type: "BlastFox")
+      comment = FactoryGirl.build(:comment, content: "DO A BARREL ROLE", commentable_id: question)
       expect(comment).not_to be_valid
     end
 
@@ -67,12 +67,12 @@ describe Comment do
     # when an valid ID is passed to the commentable_id attribute
     # #ActiveRecordMagic
     it "requires a valid commentable_id" do
-      comment = FactoryGirl.build(:comment, content: "DO A BARREL ROLE", user: user, commentable_type: "BlastFox")
+      comment = FactoryGirl.build(:comment, content: "DO A BARREL ROLE", user: user)
       expect(comment).not_to be_valid
     end
 
     it "requires a valid content" do
-      comment = FactoryGirl.build(:comment, content: "", user: user, commentable_id: answer, commentable_type: "BlastFox")
+      comment = FactoryGirl.build(:comment, content: "", user: user, commentable_id: answer)
       expect(comment).not_to be_valid
     end
   end
