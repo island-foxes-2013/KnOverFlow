@@ -29,6 +29,7 @@ feature "user sign up" do
   scenario "user should be logged in after they sign up" do
     log_in(user)
     expect(page).to have_content { user.name }
+    expect { logged_in? == true}
   end
 
   scenario "when user signs up with a bad password" do
@@ -39,12 +40,14 @@ feature "user sign up" do
     fill_in "Password confirmation", with: "1"
     click_button 'Sign Up'
     expect(current_path).to eq users_path
+    expect { logged_in? == false }
   end
 
   scenario "when user does not fill in sign up form" do
     visit new_user_path
     click_button 'Sign Up'
     expect(current_path).to eq users_path
+    expect { logged_in? == false }
   end
 
   scenario "when user signs up without an email" do
@@ -54,6 +57,7 @@ feature "user sign up" do
     fill_in "Password confirmation", with: user.password
     click_button 'Sign Up'
     expect(current_path).to eq users_path
+    expect { logged_in? == false }
   end
 
   scenario "when user signs up without a name" do
@@ -63,6 +67,7 @@ feature "user sign up" do
     fill_in "Password confirmation", with: user.password
     click_button 'Sign Up'
     expect(current_path).to eq users_path
+    expect { logged_in? == false }
   end
 
   scenario "when user signs up without matching passwords" do
@@ -73,6 +78,8 @@ feature "user sign up" do
     fill_in "Password confirmation", with: user.password + "1"
     click_button 'Sign Up'
     expect(current_path).to eq users_path
+    expect { logged_in? == false }
   end
+
 end
 
