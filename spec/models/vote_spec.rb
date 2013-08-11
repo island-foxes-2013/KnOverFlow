@@ -17,9 +17,10 @@ describe Vote do
   let(:user) { FactoryGirl.build(:user) }
   let(:question) { FactoryGirl.build(:question) }
   let(:answer) { FactoryGirl.build(:answer) }
+  let(:vote)   { question.votes.build(user_id: user.id) }
   
   context "#new" do
-    it "should allow mass-assignment on vote" do
+    it "should allow mass-assignment on up_voted" do
       expect {
         vote = Vote.new(vote: 1)
       }.to_not raise_error
@@ -31,7 +32,7 @@ describe Vote do
       }.to raise_error
       expect {
         vote = Vote.new(user_id: user.id)
-      }.to raise_error
+      }.to raise_error(MassAssignmentSecurity)
     end
 
     it "should not allow mass-assignment on votable_id" do
@@ -56,9 +57,11 @@ describe Vote do
     end
   end
 
+  context 'where the user '
+
   context "#save" do
     it "requires a valid user" do
-      vote = FactoryGirl.build(:vote, vote: 0, voteable_id: question)
+      vote.user = nil
       expect(vote).not_to be_valid
     end
 
@@ -66,13 +69,14 @@ describe Vote do
     # when an valid ID is passed to the voteable_id attribute
     # #ActiveRecordMagic
     it "requires a valid voteable_id" do
-      vote = FactoryGirl.build(:vote, vote: 1, user: user, voteable_id: 1)
+      vote.voteable_id = nil
       expect(vote).not_to be_valid
     end
 
     it "requires a valid vote" do
-      vote = FactoryGirl.build(:vote, user: user, voteable_id: answer)
+      vote.up_voted = nils
       expect(comment).not_to be_valid
     end
   end
+  
 end

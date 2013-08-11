@@ -14,11 +14,13 @@ KnOverFlow::Application.routes.draw do
   resources :questions do
     resources :comments, only: [:new, :create]
     resources :answers, only: [:new, :create] 
+    resources :votes, only: [:new, :create, :update]
   end
 
   # this likely needs to be removed
   resources :answers, except: [:new, :create] do
   	resources :comments, only: [:new, :create]
+    resources :votes, only: [:new, :create, :update]
   end
 
   root to: 'questions#index'

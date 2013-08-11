@@ -59,4 +59,12 @@ describe Answer do
       expect(answer).not_to be_valid
     end
   end
+
+   context "#update" do
+     it "should increment vote_count by one on an up vote"
+     end
+     
+     it "should decrement vote_count by one on a down vote"
+     end
+  end
 end

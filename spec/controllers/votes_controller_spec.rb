@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CommentsController do
+describe VotesController do
 
   describe "GET 'new'" do
     it "returns http success" do
@@ -16,4 +16,8 @@ describe CommentsController do
     end
   end
 
-end
+  describe "PUT 'update'" do
+    it "returns http succes"
+    put 'update'
+    response.should be_success
+  end
