@@ -1,19 +1,6 @@
-<div class='comments_display'>
-  <li><h5><%= answer.content %></h5></li>
-  <br/>
-  <p>Comments:</p>
-  <hr />
-  <% answer.comments.all.each do |comment| %>
-    <p><%= comment.content %></p>
-    <hr />
-  <% end %>
-  <%= link_to "Make a comment!", new_answer_comment_path(answer) %>
-</div>
-
-
-  <p>Comments:</p>
-  <ul>
-    <% @question.comments.all.each do |comment| %>
-    <li><%= comment.content%></li>
-    <% end %>
-  </ul>
+<h4>Post a new Comment!</h4>
+<%= form_for([commentable, comment], :remote => true) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit 'Submit', class: "btn btn-primary btn-sm" %>
+<% end %>

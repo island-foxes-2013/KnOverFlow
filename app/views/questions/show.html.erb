@@ -1,14 +1,9 @@
 <div id='question_display'>
   <h1><%= @question.title %></h1>
   <h3><%= @question.content %></h3>
-  <p>Comments:</p>
-<%= render partial: '/comments/form', locals {} %> -->
-<ul>
-<% @question.comments.all.each #do |comment| %>
-    <li><%= comment.content%></li>
-    <% end %>
-  </ul>  <br />
-  <%= render partial: '/comments/new', locals: {commentable: @question, comment: @question.comments.build} %>
+    <%= render partial: '/comments/comments', locals: {commentable: @question } %>
+    <br/>
+  <%= render partial: '/comments/form', locals: {commentable: @question, comment: @question.comments.build} %>
 </div>
 <br />
 <div id='create_answer'>
