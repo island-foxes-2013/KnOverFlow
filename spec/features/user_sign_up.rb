@@ -6,6 +6,8 @@ feature "user sign up" do
     visit root_url
   end
 
+  let(:user) { create(:user) }
+
   subject { page }
 
   it { should have_link ("sign up") }
@@ -15,13 +17,33 @@ feature "user sign up" do
     expect(current_path).to eq new_user_path
   end
 
+  scenario "the user can fill in the sign up page" do
+    visit new_user_path
+    fill_in "Name", with: user.name
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    fill_in "Password confirmation", with: user.password
+    click_button 'Sign Up'
+  end
+
   scenario "user should be logged in after they sign up" do
-    pending
-    # expect(:user).to be { log_in }
+    expect(page).to have_content { user.name }
   end
 
   scenario "when user signs up with invalid information" do
-    pending
+    visit new_user_path
+    fill_in "Name", with: user.name
+    fill_in "Email", with: user.email
+    fill_in "Password", with: "1"
+    fill_in "Password confirmation", with: "1"
+    click_button 'Sign Up'
+    expect(current_path).to eq users_path
+  end
+
+  scenario "when user does not fill in sign up form" do
+    visit new_user_path
+    click_button 'Sign Up'
+    expect(current_path).to eq users_path
   end
 end
 
