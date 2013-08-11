@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "post answer"  do
+feature "post answer" do
 
   let!(:user) { create(:user) }
   let!(:question) { create(:question, user: user) }
@@ -14,22 +14,21 @@ feature "post answer"  do
     page.should have_link "answer question"
   end
 
-  scenario "link appends answer form" do
+  scenario "link appends answer form", :js => true do
     click_link "answer question"
     page.should have_content "Post and Answer Here!"
   end
 
-  scenario "a blank answer posts an error" do
+  scenario "a blank answer posts an error", :js => true do
     click_link "answer question"
     click_button "Create Answer"
     page.should have_content "can't be blank"
   end
 
-  scenario "a valid answer posts to question" do
+  scenario "a valid answer posts to question", :js => true do
     click_link "answer question"
     fill_in "answer_content", with: "Post Answer Spec Test"
     click_button "Create Answer"
-    visit questions_path
     page.should have_content "Post Answer Spec Test"
   end
 
