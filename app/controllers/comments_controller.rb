@@ -21,7 +21,9 @@ class CommentsController < ApplicationController
           html: render_to_string(partial: 'comments', locals: {commentable: question})
         }
       else
-        puts "Failed to save comment for Question"
+        render json: {
+          html: render_to_string(partial: 'form', locals: { commentable: question, comment: question.comments.build })
+        }, status: :unprocessable_entity
       end
     elsif params.has_key?('answer_id')
       answer = Answer.find(params[:answer_id])
@@ -32,7 +34,9 @@ class CommentsController < ApplicationController
           html: render_to_string(partial: 'comments', locals: { commentable: answer})
         }
       else
-        puts "Failed to save comment for Answer"
+        render json: {
+          html: render_to_string(partial: 'form', locals: { commentable: answer, comment: answer.comments.build })
+        }, status: :unprocessable_entity
       end
     end
   end 
