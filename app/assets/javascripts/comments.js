@@ -10,6 +10,9 @@ var CommentsController = {
     // ajax:success (when server returns successfully)
     // ajax:error (when server returns unsuccessfully)
     // ajax:complete (when server returns no matter what)    
+    // listen for new_question_comment_path and new_answer_comment_path link
+    $(document).on('ajax:success', 'span.click_new_comment', this.onLinkSuccess);
+    
     // listen for something other than document
     // $(document).on('ajax:beforeSend', 'form#new_comment', this.beforeSend);
     $(document).on('ajax:success', 'form#new_comment', this.onSuccess);
@@ -23,14 +26,22 @@ var CommentsController = {
 
   onSuccess: function(e, response, status, xhr) {
 
-    var $commentForm = $(e.target);
-    var $commentsDiv = $(this).parent().find('.comments_display');
-    $commentsDiv.replaceWith(response.html); 
-    $commentForm.find('input[name="comment[content]"]').val('');
-    var offset = $commentsDiv.find('li:last-child').offset();
+    // var $commentForm = $(e.target);
+    var $newComment = $(response.html).find('li').last();
+
+    // refactor to have some sort of active class, i.e. activeCommentsDisplay
+    // debugger
+    var $commentsDisplay = $(this).parent().parent().parent().find('.comments_display ul').append($newComment);
+    // $commentForm.find('input[name="comment[content]"]').val('');
+    // var offset = $commentsDiv.find('li:last-child').offset();
   },
 
   onError: function(e, xhr, status, message) {
     console.log("failure in javascript!")
+  }, 
+
+  onLinkSuccess: function(e, partial, status, xhr) {
+    $(this).find('div.create_comment').html(partial.html);
+    $(this).find('div.comments_display').remove();
   }
 }

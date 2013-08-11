@@ -2,12 +2,13 @@ class CommentsController < ApplicationController
 
   def new 
     if params.has_key?('question_id')
-      @comment = Comment.new
       @commentable = Question.find(params[:question_id])
     elsif params.has_key?('answer_id')
-      @comment = Comment.new
       @commentable = Answer.find(params[:answer_id])
     end
+    render json: {
+      html: render_to_string(partial: 'form', locals: { commentable: @commentable, comment: @commentable.comments.build })
+    }
   end 
 
   def create
