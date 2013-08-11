@@ -17,7 +17,9 @@ describe VotesController do
   end
 
   describe "PUT 'update'" do
-    it "returns http succes"
-    put 'update'
-    response.should be_success
+    it "returns http succes" do
+      put 'update'
+      response.should be_success
+    end
   end
+end
