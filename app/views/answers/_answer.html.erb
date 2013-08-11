@@ -1,6 +1,7 @@
 <div class='answer_display'>
   <li><h5><%= answer.content %></h5></li>
-  <hr />
+  <%= link_to "", answers_votes_path, method: :create, remote:true, class: 'up_vote' %>
+  <br />
   <%= render partial: '/comments/comments', locals: {commentable: answer } %>
   <br />
   <span class='click_new_comment'><%= link_to 'create comment', new_answer_comment_path(answer), remote: true %>
