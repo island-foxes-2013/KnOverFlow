@@ -12,10 +12,9 @@ class VotesController < ApplicationController
 
   def create
     # votable class, votable id, votable value
-    vote = Vote.create_vote(voteable_type: params[:voteable_type], 
+    vote = current_user.find_or_initialize_by(voteable_type: params[:voteable_type], 
                             voteable_id: params[:id], 
-                            up_voted: params[:up_voted]
-                            user_id:  current_user.id)
+                            up_voted: params[:up_voted])
     unless vote.id
       vote.save
       render json: 'Your vote has been saved!'.to_json # opportunity to send status back here too for controller testing
@@ -24,11 +23,11 @@ class VotesController < ApplicationController
     end
   end
 
-  def update
-    if params.has_key?(question.id)
-      vote_count = Question.find(params[:question_id]).vote_count
-      @vote = Question.find(params[:question_id]).update.vote_count
-    elsif 
-    end
-  end
-      
+  # def update
+  #   if params.has_key?(question.id)
+  #     vote_count = Question.find(params[:question_id]).vote_count
+  #     @vote = Question.find(params[:question_id]).update.vote_count
+  #   elsif 
+  #   end
+  # end
+end

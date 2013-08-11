@@ -4,7 +4,16 @@ class Vote <ActiveRecord::Base
 
   attr_accessible :up_voted
 
+  validates :voteable_id, :user, presence: true
 
-  validates :voteable_id, :up_voted, :user, presence: true
+  before_save :update_vote_count
 
+  def update_vote_count
+    if up_voted 
+      self.voteable.vote_count += 1
+    else 
+      self.voteable.vote_count -=1
+    end
+  self.voteable.save
+  end
 end

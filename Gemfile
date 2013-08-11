@@ -29,6 +29,7 @@ group :development, :test do
   gem 'launchy'
   # gem 'ruby_gntp' # growl notify
   gem 'rb-fsevent' #notifies when files change
+  gem 'database_cleaner'
 end
 
 gem 'pry-rails', :group => :development
