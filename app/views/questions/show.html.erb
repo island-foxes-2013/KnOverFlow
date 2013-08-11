@@ -6,9 +6,12 @@
   <%= render partial: '/comments/form', locals: {commentable: @question, comment: @question.comments.build} %>
 </div>
 <br />
+<span id='click_new_answer'><%= link_to 'answer question', new_question_answer_path(@question), remote: true %>
 <div id='create_answer'>
-  <%= render partial: 'answers/form', locals: {answer: @question.answers.build, question: @question} %>
+  
+  <%#= render partial: 'answers/form', locals: {answer: @question.answers.build, question: @question} %>
 </div>
+</span>
   <% if @question.answers.any? %>
   <h4><%= @question.answers.count %> answers below:</h4>
       <div class="answers">
@@ -18,6 +21,3 @@
       </div>
     <% end %>
   <br/>
-    
-  <%#= link_to "Write an answer!", new_question_answer_path(@question) %>
-  <%# end %>
