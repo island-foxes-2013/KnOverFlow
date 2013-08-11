@@ -57,9 +57,11 @@ describe Question do
 
   context "#update" do
     it "should increment vote_count by one on an up vote" do
+      pending
     end
 
     it "should decrement vote_count by one on a down vote" do
+      pending
     end
   end
 end
