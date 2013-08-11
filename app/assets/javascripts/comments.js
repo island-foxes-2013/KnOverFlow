@@ -24,10 +24,9 @@ var CommentsController = {
   onSuccess: function(e, response, status, xhr) {
 
     var $commentForm = $(e.target);
-    var blah = $(this).parent().find('.comments_display');
-    var $commentsDiv = blah; //$('.comments_display')
+    var $commentsDiv = $(this).parent().find('.comments_display');
     $commentsDiv.replaceWith(response.html); 
-    $commentForm.find('input[name="question[comment]"]').val('');
+    $commentForm.find('input[name="comment[content]"]').val('');
     var offset = $commentsDiv.find('li:last-child').offset();
   },
 
