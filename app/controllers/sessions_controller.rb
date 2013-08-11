@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @session.id
       redirect_to root_path, :notice => "Logged in!"
     else
-      # flash[:error] = "Invalid email or password"
+      flash[:error] = "Invalid email or password"
       render 'new'
     end
   end
