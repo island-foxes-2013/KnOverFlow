@@ -7,8 +7,13 @@ var AnswersController = {
     // ajax:beforeSend (before form is submitted)
     // ajax:success (when server returns successfully)
     // ajax:error (when server returns unsuccessfully)
-    // ajax:complete (when server returns no matter what)    
-    // listen for something other than document
+    // ajax:complete (when server returns no matter what) 
+
+    // listen for new_question_answer_path link
+    $(document).on('ajax:success', 'span#click_new_answer', this.onLinkSuccess);
+    
+    // listen for something other than document eventually
+    // here I'll need page to go away on complete
     $(document).on('ajax:beforeSend', 'form#new_answer', this.beforeSend);
     $(document).on('ajax:success', 'form#new_answer', this.onSuccess);
     $(document).on('ajax:error', 'form#new_answer', this.onError);
@@ -34,5 +39,10 @@ var AnswersController = {
     // use .html and change the arugements
     $(e.target).parent().html(xhr.responseJSON.html);
     // $(e.target).after("<div class='error'>"+xhr.responseJSON.messages.join(',')+"</div>");
+  }, 
+
+  onLinkSuccess: function(e, partial, status, xhr) {
+    $(this).find('div#create_answer').html(partial.html);
+    $(this).find('div.answer_display').remove();
   }
 };
