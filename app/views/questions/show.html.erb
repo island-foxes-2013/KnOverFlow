@@ -3,14 +3,12 @@
   <h3><%= @question.content %></h3>
     <%= render partial: '/comments/comments', locals: {commentable: @question } %>
     <br/>
-  <%= render partial: '/comments/form', locals: {commentable: @question, comment: @question.comments.build} %>
+    <span class='click_new_comment'><%= link_to 'create comment', new_question_comment_path(@question), remote: true %>
+    <div class='create_comment'></div>  
 </div>
 <br />
-<span id='click_new_answer'><%= link_to 'answer question', new_question_answer_path(@question), remote: true %>
-<div id='create_answer'>
-  
-  <%#= render partial: 'answers/form', locals: {answer: @question.answers.build, question: @question} %>
-</div>
+<span id='click_new_answer'><%= link_to 'answer question',new_question_answer_path(@question), remote: true %>
+<div id='create_answer'></div>
 </span>
   <% if @question.answers.any? %>
   <h4><%= @question.answers.count %> answers below:</h4>

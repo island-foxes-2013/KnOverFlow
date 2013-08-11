@@ -3,6 +3,6 @@
   <hr />
   <%= render partial: '/comments/comments', locals: {commentable: answer } %>
   <br />
-  <%= render partial: '/comments/form', locals: {commentable: answer, comment: answer.comments.build} %>
-  <br />
+  <span class='click_new_comment'><%= link_to 'create comment', new_answer_comment_path(answer), remote: true %>
+  <div class='create_comment'></div>  
 </div>

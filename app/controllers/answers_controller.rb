@@ -5,7 +5,6 @@ class AnswersController < ApplicationController
 
   def new
     question = Question.find(params[:question_id])
-    p "8"*400
     render json: {
       html: render_to_string(partial: 'form', locals: { question: question, answer: question.answers.build })
     }
