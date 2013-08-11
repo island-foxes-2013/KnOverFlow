@@ -61,10 +61,10 @@ describe Answer do
   end
 
    context "#update" do
-     it "should increment vote_count by one on an up vote"
+     it "should increment vote_count by one on an up vote" do
      end
      
-     it "should decrement vote_count by one on a down vote"
+     it "should decrement vote_count by one on a down vote" do
      end
   end
 end
