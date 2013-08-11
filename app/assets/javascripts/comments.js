@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 var CommentsController = {
   bindEvents: function () {
-        // ajax:beforeSend (before form is submitted)
+    // ajax:beforeSend (before form is submitted)
     // ajax:success (when server returns successfully)
     // ajax:error (when server returns unsuccessfully)
     // ajax:complete (when server returns no matter what)    
@@ -26,18 +26,22 @@ var CommentsController = {
 
   onSuccess: function(e, response, status, xhr) {
 
-    // var $commentForm = $(e.target);
     var $newComment = $(response.html).find('li').last();
 
     // refactor to have some sort of active class, i.e. activeCommentsDisplay
     // debugger
     var $commentsDisplay = $(this).parent().parent().parent().find('.comments_display ul').append($newComment);
-    // $commentForm.find('input[name="comment[content]"]').val('');
-    // var offset = $commentsDiv.find('li:last-child').offset();
   },
 
   onError: function(e, xhr, status, message) {
-    console.log("failure in javascript!")
+    if (xhr.responseJSON == null)
+    {
+      window.alert("remember to log in or create an account");
+    }
+    else
+    {
+      $(e.target).parent().html(xhr.responseJSON.html);
+    }
   }, 
 
   onLinkSuccess: function(e, partial, status, xhr) {

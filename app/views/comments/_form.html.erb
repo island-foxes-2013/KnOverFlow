@@ -3,4 +3,9 @@
   <%= f.label :content %>
   <%= f.text_field :content %>
   <%= f.submit 'Submit', class: "btn btn-primary btn-sm" %>
+  <% if commentable.errors[:content] %>
+    <span class="errors">
+      <%= commentable.errors[:content].join(',') %>
+    </span>
+  <% end %>
 <% end %>

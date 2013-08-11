@@ -36,9 +36,14 @@ var AnswersController = {
   }, 
 
   onError: function(e, xhr, status, message) {
-    // use .html and change the arugements
-    $(e.target).parent().html(xhr.responseJSON.html);
-    // $(e.target).after("<div class='error'>"+xhr.responseJSON.messages.join(',')+"</div>");
+    if (xhr.responseJSON == null)
+    {
+      window.alert("remember to log in or create an account");
+    }
+    else
+    {
+      $(e.target).parent().html(xhr.responseJSON.html);
+    }
   }, 
 
   onLinkSuccess: function(e, partial, status, xhr) {
