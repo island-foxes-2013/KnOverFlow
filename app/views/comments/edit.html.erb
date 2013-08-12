@@ -1,0 +1,12 @@
+<h4>Edit Your new Comment!</h4>
+<%= flash[:error] if flash[:error] %>
+<%= form_for([@question, @comment]) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit 'Submit', class: "btn btn-primary btn-sm" %>
+  <% if @comment.errors[:content] %>
+    <span class="errors">
+      <%= @comment.errors[:content].join(',') %>
+    </span>
+  <% end %>
+<% end %>

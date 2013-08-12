@@ -39,5 +39,31 @@ class CommentsController < ApplicationController
         }, status: :unprocessable_entity
       end
     end
-  end 
+  end
+
+  def destroy
+    @comment = Comment.find(params["question_id"])
+    @question = @comment.commentable_id
+    if @comment.user == current_user
+      @comment.destroy
+      redirect_to question_path(@question)
+    end
+  end
+
+  def edit
+    @comment = Comment.find(params["question_id"])
+    @question = Question.find(@comment.commentable_id)
+  end
+
+  def update
+    @question = Question.find(params["question_id"])
+    @comment = Comment.find(params[:id])
+    @comment.content = params["comment"]["content"]
+    if @comment.save
+      redirect_to question_path(@question)
+    else
+      redirect_to edit_question_comment_path(@comment)
+      flash[:error] = "Error!"
+    end
+  end
 end
