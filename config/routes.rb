@@ -14,7 +14,7 @@ KnOverFlow::Application.routes.draw do
   resources :questions do
     resources :votes, only: [:new, :create, :update]
     resources :comments, only: [:new, :create, :edit, :destroy]
-    resources :answers, only: [:new, :create, :edit, :destroy] 
+    resources :answers, only: [:new, :create, :edit, :update, :destroy] 
   end
 
   # this likely needs to be removed

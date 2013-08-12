@@ -27,11 +27,27 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+    @answer = Answer.find(params[:id])
+    @question = Question.find(@answer.question_id)
+    if @answer.user == current_user
+      @answer.destroy
+      redirect_to question_path(@question)
+    end
   end
 
   def edit
+    @answer = Answer.find(params[:id])
   end
 
   def update
+    @answer = Answer.find(params[:id])
+    @question = Question.find(@answer.question_id)
+    @answer.content = params["answer"]["content"]
+    if @answer.save
+      redirect_to question_path(@question)
+    else
+      redirect_to edit_answer_path(@answer)
+      flash[:error] = "Error!"
+    end
   end
 end
