@@ -13,13 +13,13 @@ KnOverFlow::Application.routes.draw do
 
   resources :questions do
     resources :votes, only: [:new, :create, :update]
-    resources :comments, only: [:new, :create, :edit, :destroy]
+    resources :comments, only: [:new, :create, :edit, :update, :destroy]
     resources :answers, only: [:new, :create, :edit, :update, :destroy] 
   end
 
   # this likely needs to be removed
   resources :answers, except: [:new, :create] do
-  	resources :comments, only: [:new, :create]
+  	resources :comments, only: [:new, :create, :edit, :update, :destroy]
     resources :votes, only: [:new, :create, :update]
   end
 
