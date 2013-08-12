@@ -27,9 +27,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.user == current_user
       if @question.comments
-        @question.comments.destroy
+        @question.comments.destroy_all
       end
-      @question.answers.destroy
+      if @question.answers
+        @question.answers.destroy_all
+      end
       @question.destroy
       redirect_to root_path
     end
