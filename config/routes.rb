@@ -1,29 +1,16 @@
 KnOverFlow::Application.routes.draw do
-  # this is what I'm thinking the routes should be 
-  # so the user validation stuff can pass...
-  # resources :users do
-  #   resources :questions do
-  #   	resources :comments, only: [:new, :create]
-  #     resources :answers, only: [:new, :create] do
-  #       resources :comments, only: [:new, :create]
-  #     end
-  #   end
-  # end
-  # resources :questions, only [:show]
-
   resources :questions do
-    resources :votes, only: [:new, :create, :update]
+    resources :votes, only: [:create]
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
     resources :answers, only: [:new, :create, :edit, :update, :destroy] 
   end
 
-  # this likely needs to be removed
-  resources :answers, except: [:new, :create] do
+  resources :answers, only: [] do
   	resources :comments, only: [:new, :create, :edit, :update, :destroy]
-    resources :votes, only: [:new, :create, :update]
+    resources :votes, only: [:create]
   end
 
   root to: 'questions#index'
-  resources :users
+  resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
 end

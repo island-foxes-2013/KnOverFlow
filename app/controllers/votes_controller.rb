@@ -1,15 +1,5 @@
 class VotesController < ApplicationController
   
-  def new
-    if params.has_key?(question.id)
-      @vote = Vote.new
-      @voteable = Question.find(params[:question_id])
-    elsif params.has_key?(answer.id)
-      @vote = Vote.new
-      @voteable = Answer.find(params[:answer_id])
-    end
-  end
-
   def create
     # votable class, votable id, votable value
       if params.has_key?(:up_voted)
