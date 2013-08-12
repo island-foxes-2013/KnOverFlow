@@ -16,7 +16,7 @@ feature "post answer" do
 
   scenario "link appends answer form", :js => true do
     click_link "answer question"
-    page.should have_content "Post and Answer Here!"
+    page.should have_content "Post an Answer Here!"
   end
 
   scenario "a blank answer posts an error", :js => true do

@@ -19,7 +19,7 @@ feature "writing comments", js: true do
   # end
 
   scenario "an answer will have a link to create a comment", js: true do
-    
+    pending
     # sleep(10)
     fill_in "Content", with: "blah"
     click_button "Create Answer"
