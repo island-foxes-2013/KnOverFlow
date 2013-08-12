@@ -1,4 +1,4 @@
-#brand a{
+/*#brand a{
   color: orange !important;
   font-size: 20px;
 }
@@ -41,4 +41,357 @@ ul li div {
 
 .field_with_errors {
   display: inline;
-}
+}*/
+
+ body {
+   padding-left: 0;
+   padding-right: 0;
+ }
+ /* This makes absolutely positioned elements like p, h1,
+     and some bootstrap elements placed properly. */
+ #absolute-wrapper p, #absolute-wrapper h1, #absolute-wrapper h2, #absolute-wrapper h3, #absolute-wrapper h4, #absolute-wrapper h5, #absolute-wrapper h6 {
+   margin-top: 0 !important;
+ }
+ /* Set floating body text margins to 0 */
+ [class*="dom-paragraph"] p {
+   margin: 0 0 10px 0;
+ }
+ #absolute-wrapper {
+   position: relative;
+   width: 980px;
+   margin: 0 auto;
+   height: 1px;
+ }
+ #absolute-wrapper .dom-paragraph {
+   overflow: hidden;
+   width: 141px;
+   height: 92px;
+   position: absolute;
+   top: 14px;
+   left: -104px;
+ }
+ #absolute-wrapper .dom-paragraph p {
+   font-family:"Arial";
+   line-height: 1.5;
+ }
+ #absolute-wrapper .container-fluid {
+   background: #000000;
+   background-image: <img src="https://si0.twimg.com/profile_images/1259852144/LoveMyLibrary2.jpg">;
+   overflow: hidden;
+   width: 940px;
+   height: 361px;
+   position: absolute;
+   top: 51px;
+   left: 0px;
+ }
+ #absolute-wrapper .container.container-1 {
+   margin-top: 30px;
+   margin-bottom: 170px;
+ }
+ #absolute-wrapper .container-1 p {
+   font-size: 17px;
+ }
+ #absolute-wrapper .container-1 .heading {
+   font-size: 58px;
+   line-height: 64px;
+ }
+ #absolute-wrapper .container-1 .btn-primary {
+   background: #ff6a32;
+   margin: 15px 0px 0px 0px;
+   -moz-box-shadow: none;
+   -webkit-box-shadow: none;
+   -o-box-shadow: none;
+   box-shadow: none;
+   text-shadow: none;
+   border-radius: 3px;
+   border: none;
+ }
+ #absolute-wrapper .image {
+   border-radius: 0px;
+   -moz-box-shadow: none;
+   -webkit-box-shadow: none;
+   -o-box-shadow: none;
+   box-shadow: none;
+   width: 30px;
+   height: 30px;
+   position: absolute;
+   top: 104px;
+   left: -139px;
+ }
+ #absolute-wrapper .container.container-2 {
+   background: #333333;
+   padding: 20px 20px 0px 20px;
+   width: 940px;
+   height: 31px;
+   position: absolute;
+   top: 412px;
+   left: 0px;
+ }
+ #absolute-wrapper .container-2 p {
+   color: #ffffff;
+   font-family:"Arial";
+   line-height: 1.5;
+ }
+ #absolute-wrapper .icon.icon-share {
+   color: #ffffff;
+   position: absolute;
+   top: 433px;
+   left: 916px;
+ }
+ #absolute-wrapper .page-header {
+   padding: 0px;
+   border: none;
+   width: 355px;
+   position: absolute;
+ }
+ #absolute-wrapper .page-header.page-header-1 {
+   height: 56px;
+ }
+ #absolute-wrapper .page-header.page-header-2 {
+   left: 94px;
+ }
+ #absolute-wrapper .page-header.page-header-3 {
+   height: 34px;
+ }
+ #absolute-wrapper .page-header.page-header-4 {
+   left: 97px;
+ }
+ #absolute-wrapper .page-header.page-header-5 {
+   left: 99px;
+ }
+ #absolute-wrapper .page-header.page-header-6 {
+   left: 91px;
+ }
+ #absolute-wrapper .page-header.page-header-7 {
+   top: 481px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-7 h1 {
+   font-weight: normal;
+   font-size: 42px;
+   color: #555555;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-7 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-8 {
+   top: 537px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-8 h1 {
+   font-weight: normal;
+   color: #555555;
+   font-size: 24px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-8 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-4.page-header-9 {
+   top: 515px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-4.page-header-9 h1 {
+   font-weight: normal;
+   font-size: 14px;
+   color: #555555;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-4.page-header-9 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-5.page-header-10 {
+   top: 560px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-5.page-header-10 h1 {
+   font-weight: normal;
+   font-size: 14px;
+   color: #555555;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-5.page-header-10 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph {
+   width: 758px;
+   position: absolute;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-1 {
+   height: 58px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-2 {
+   height: 29px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-3 {
+   left: 97px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-4 {
+   top: 625px;
+   left: 98px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-1.paragraph-4 p {
+   font-weight: 300;
+   font-size: 19px;
+   line-height: 30px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-2.paragraph-3.paragraph-5 {
+   top: 598px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-2.paragraph-3.paragraph-5 p {
+   font-weight: 300;
+   font-size: 19px;
+   line-height: 30px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-6.page-header-11 {
+   top: 709px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-6.page-header-11 h1 {
+   font-weight: normal;
+   font-size: 42px;
+   color: #555555;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-6.page-header-11 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-4.page-header-12 {
+   top: 739px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-4.page-header-12 h1 {
+   font-weight: normal;
+   font-size: 14px;
+   color: #555555;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-4.page-header-12 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-6.page-header-13 {
+   top: 777px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-6.page-header-13 h1 {
+   font-weight: normal;
+   color: #555555;
+   font-size: 24px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-6.page-header-13 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-14 {
+   top: 800px;
+   left: 96px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-14 h1 {
+   font-weight: normal;
+   font-size: 14px;
+   color: #555555;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-14 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-2.paragraph-6 {
+   top: 840px;
+   left: 94px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-2.paragraph-6 p {
+   font-weight: 300;
+   font-size: 19px;
+   line-height: 30px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-1.paragraph-7 {
+   top: 871px;
+   left: 96px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-1.paragraph-7 p {
+   font-weight: 300;
+   font-size: 19px;
+   line-height: 30px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-15 {
+   top: 941px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-15 h1 {
+   font-weight: normal;
+   font-size: 42px;
+   color: #555555;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-15 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-16 {
+   top: 971px;
+   left: 100px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-16 h1 {
+   font-weight: normal;
+   font-size: 14px;
+   color: #555555;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-16 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-17 {
+   top: 1009px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-17 h1 {
+   font-weight: normal;
+   color: #555555;
+   font-size: 24px;
+ }
+ #absolute-wrapper .page-header.page-header-1.page-header-2.page-header-17 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-5.page-header-18 {
+   top: 1032px;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-5.page-header-18 h1 {
+   font-weight: normal;
+   font-size: 14px;
+   color: #555555;
+ }
+ #absolute-wrapper .page-header.page-header-3.page-header-5.page-header-18 h1 small {
+   font-size: 42px;
+   line-height: 42px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-2.paragraph-3.paragraph-8 {
+   top: 1072px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-2.paragraph-3.paragraph-8 p {
+   font-weight: 300;
+   font-size: 19px;
+   line-height: 30px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-1.paragraph-9 {
+   top: 650px;
+   left: 99px;
+ }
+ #absolute-wrapper .dom-body-text.paragraph.paragraph-1.paragraph-9 p {
+   font-weight: 300;
+   font-size: 19px;
+   line-height: 30px;
+ }
+ .navbar {
+   height: 60px;
+ }
+ .navbar .navbar-inner {
+   background: rgba(255, 255, 255, 0.960784);
+   border: none;
+   height: 60px;
+   padding-left: 20px;
+   padding-right: 20px;
+ }
+ .navbar .navbar-inner .brand {
+   margin: 0px 0px 0px -15px;
+   text-shadow: none;
+   font-family:"oswald";
+   font-weight: bold;
+   font-size: 24px;
+   color: #333333;
+   line-height: 40px;
+ }
+ .navbar .navbar-inner .nav li a {
+   line-height: 40px;
+ }
