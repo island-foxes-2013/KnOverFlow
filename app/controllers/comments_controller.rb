@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
         }
       else
         render json: {
-          html: render_to_string(partial: 'form', locals: { commentable: question, comment: question.comments.build })
+          errors: comment.errors.full_messages.join(',')
         }, status: :unprocessable_entity
       end
     elsif params.has_key?('answer_id')
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
         }
       else
         render json: {
-          html: render_to_string(partial: 'form', locals: { commentable: answer, comment: answer.comments.build })
+          errors: comment.errors.full_messages.join(',')
         }, status: :unprocessable_entity
       end
     end

@@ -40,7 +40,7 @@ var CommentsController = {
     }
     else
     {
-      $(e.target).parent().html(xhr.responseJSON.html);
+      $(e.target).parent().html(xhr.responseJSON.errors);
     }
   }, 
 
