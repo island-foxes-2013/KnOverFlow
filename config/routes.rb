@@ -5,7 +5,7 @@ KnOverFlow::Application.routes.draw do
     resources :answers, only: [:new, :create, :edit, :update, :destroy] 
   end
 
-  resources :answers, only: [] do
+  resources :answers, only: [:edit, :update, :destroy] do
   	resources :comments, only: [:new, :create, :edit, :update, :destroy]
     resources :votes, only: [:create]
   end
