@@ -30,8 +30,18 @@ class AnswersController < ApplicationController
   end
 
   def edit
+    @answer = Answer.find(params[:answer_id])
   end
 
   def update
+    @answer = Answer.find(params[:answer_id])
+    @question = Question.find(@answer.question_id)
+    @answer.content = params["answer"]["content"]
+    if @answer.save
+      redirect_to question_path(@question)
+    else
+      redirect_to edit_answer_path(@answer)
+      flash[:error] = "Error!"
+    end
   end
 end

@@ -36,8 +36,6 @@ class QuestionsController < ApplicationController
   end
 
   def update 
-    p "these are the params #{params}"
-    p params["question"]["title"]
     @question = Question.find(params[:id])
     @question.title = params["question"]["title"]
     @question.content = params["question"]["content"]
