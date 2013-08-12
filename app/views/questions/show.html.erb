@@ -1,21 +1,25 @@
 <div id='question_display'>
+  <span style="float: right;"><% if @question.user == current_user %><%= button_to "delete", question_path(@question), {method: :delete} %><%= button_to "edit", edit_question_path(@question.id), {method: :get} %><% end %></span>
   <h1><%= @question.title %></h1>
   <h3><%= @question.content %></h3>
-    <%= render partial: '/comments/comments', locals: {commentable: @question } %>
-    <br/>
-    <span class='click_new_comment'><%= link_to 'create comment', new_question_comment_path(@question), remote: true %>
+  <%= render partial: '/comments/comments', locals: {commentable: @question } %>
+  <br/>
+  <span class='click_new_comment'><%= link_to 'create comment', new_question_comment_path(@question), remote: true %>
     <div class='create_comment'></div>  
-</div>
-<br />
-<span id='click_new_answer'><%= link_to 'answer question',new_question_answer_path(@question), remote: true %>
-<div id='create_answer'></div>
-</span>
+  </div>
+  <br />
+  <span id='click_new_answer'><%= link_to 'answer question',new_question_answer_path(@question), remote: true %>
+    <div id='create_answer'></div>
+  </span>
+  <div class="answers">
   <% if @question.answers.any? %>
   <h4><%= @question.answers.count %> answers below:</h4>
-      <div class="answers">
       <% @question.answers.all.each do |answer| %>
-        <%= render partial: 'answers/answer', locals: {answer: answer} %>
-      <% end %>
-      </div>
+    <%= render partial: 'answers/answer', locals: {answer: answer} %>
     <% end %>
+  <% end %>
+    </div>
+<!--   <div class="answers">
+    </div> -->
+    <%%>
   <br/>
