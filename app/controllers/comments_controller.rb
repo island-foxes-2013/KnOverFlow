@@ -22,9 +22,7 @@ class CommentsController < ApplicationController
         }
       else
         render json: {
-          # render the html form partial never worked...errors never appeard
           html: render_to_string(partial: 'form', locals: { commentable: question, comment: comment })
-          # errors: comment.errors.full_messages
         }, status: :unprocessable_entity
       end
     elsif params.has_key?('answer_id')
@@ -36,9 +34,9 @@ class CommentsController < ApplicationController
           html: render_to_string(partial: 'comments', locals: { commentable: answer})
         }
       else
-        # render json: {
-        #   errors: comment.errors.full_messages
-        # }, status: :unprocessable_entity
+        render json: {
+          html: render_to_string(partial: 'form', locals: { commentable: answer, comment: comment })
+        }, status: :unprocessable_entity
       end
     end
   end 
