@@ -55,8 +55,16 @@ RSpec.configure do |config|
 end
 
 def log_in(user)
+  # p "X"*100
+  # p "in log in method"
   visit new_session_path
   fill_in "Email", with: user.email
   fill_in "Password", with: user.password
   click_button 'Sign In'
+  # session[:user_id] = user.id
+  # p "done with log in method"
+  # p "#{current_user}"
+  # p "X"*100
 end
+
+Capybara.javascript_driver = :webkit

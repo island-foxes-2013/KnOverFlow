@@ -27,6 +27,8 @@ group :development, :test do
   gem 'turn', '< 0.8.3' # pretty printing for tests
   gem 'guard-rspec' # auto-run tests
   gem 'launchy'
+  # gem 'selenium-webdriver'
+  gem 'capybara-webkit','~>1.0.0'
   # gem 'ruby_gntp' # growl notify
   gem 'rb-fsevent' #notifies when files change
   gem 'database_cleaner'
