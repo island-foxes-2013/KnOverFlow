@@ -50,9 +50,10 @@ var AnswersController = {
     $(this).find('div#create_answer').html(partial.html);
     $(this).find('div.answer_display').remove();
   }
-  // Vote Ajax Call
-  // $(".up_vote").on("click", function(e){
-  //   e.preventDefault();
-  //   console.log('this is the link');
-  // });
+  //Vote Ajax Call
+  // $(document.on("click", '.up_vote' function(){
+  //   $(".up_vote").bind('ajax:success', function(){
+  //     alter("Success!")
+  //   }
+  });
 };
