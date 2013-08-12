@@ -1,12 +1,12 @@
 <h1>Update Your Answer Here!</h1>
 
-<%= form_for [question, answer],remote: true do |f| %>
+<%= form_for [@answer] do |f| %>
   <%= f.label :content %>
-  <%= f.text_field :content, placeholder: "answer content" %>
+  <%= f.text_field :content %>
   <%= f.submit %>
-  <% if answer.errors[:content] %>
+  <% if @answer.errors[:content] %>
     <span class="errors">
-      <%= answer.errors[:content].join(',') %>
+      <%= @answer.errors[:content].join(',') %>
     </span>
   <% end %>
 <% end %>
