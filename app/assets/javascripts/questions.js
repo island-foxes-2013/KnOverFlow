@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  QuestionsController.bindEvents();
+  // QuestionsController.bindEvents();
 });
 
 var QuestionsController = {

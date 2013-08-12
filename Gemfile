@@ -31,7 +31,7 @@ group :development, :test do
   gem 'capybara-webkit','~>1.0.0'
   # gem 'ruby_gntp' # growl notify
   gem 'rb-fsevent' #notifies when files change
-  gem 'database_cleaner'
+  # gem 'database_cleaner'
 end
 
 gem 'pry-rails', :group => :development
