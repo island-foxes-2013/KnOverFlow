@@ -1,5 +1,7 @@
 <h4>Post a new Comment!</h4>
 <%= form_for [commentable, comment], remote: true do |f| %>
+  <%= f.hidden_field :commentable_type, value: commentable.class %>
+  <%= f.hidden_field :commentable_id, value: commentable.id %>
   <%= f.label :content %>
   <%= f.text_field :content %>
   <%= f.submit 'Submit' %>
