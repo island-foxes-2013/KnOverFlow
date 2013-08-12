@@ -42,8 +42,15 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params["question_id"])
-    @question = @comment.commentable_id
+    if params.has_key?("question_id")
+      @comment = Comment.find(params["question_id"])
+      @question = Question.find(@comment.commentable_id)
+    else
+      @comment = Comment.find(params["answer_id"])
+      @answer = Answer.find(@comment.commentable_id)
+      @question = @answer.question_id
+    end
+
     if @comment.user == current_user
       @comment.destroy
       redirect_to question_path(@question)
@@ -51,19 +58,36 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params["question_id"])
-    @question = Question.find(@comment.commentable_id)
+    if params.has_key?("question_id")
+      @comment = Comment.find(params["id"])
+      @question = Question.find(params["question_id"])
+    else
+      @comment = Comment.find(params["id"])
+      @answer = Answer.find(params["answer_id"])
+    end
   end
 
   def update
-    @question = Question.find(params["question_id"])
-    @comment = Comment.find(params[:id])
+    if params.has_key?("question_id")
+      @comment = Comment.find(params["id"])
+      @question = Question.find(params["question_id"])
+    else
+      @comment = Comment.find(params["id"])
+      @answer = Answer.find(params["answer_id"])
+      @question = @answer.question_id
+    end
+
     @comment.content = params["comment"]["content"]
+
     if @comment.save
       redirect_to question_path(@question)
     else
-      redirect_to edit_question_comment_path(@comment)
       flash[:error] = "Error!"
+      if params.has_key?("question_id")
+        redirect_to edit_question_comment_path(@question, @comment)
+      else
+        redirect_to edit_answer_comment_path(@answer, @comment)
+      end
     end
   end
 end
