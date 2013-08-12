@@ -30,6 +30,9 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     @question = Question.find(@answer.question_id)
     if @answer.user == current_user
+      if @answer.comments
+        @answer.comments.destroy_all
+      end
       @answer.destroy
       redirect_to question_path(@question)
     end
