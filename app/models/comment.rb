@@ -8,4 +8,15 @@ class Comment < ActiveRecord::Base
   # user_id of the comment has been removed from mass assignment and is now done by specific sttribute assignment.
 
   validates :commentable_id, :content, :user, presence: true
+
+  def root_question
+    if self.commentable.is_a? Question
+      self.commentable
+    elsif self.commentable.is_a? Answer
+      Answer.find(self.commentable.id).question
+    else
+      nil
+    end
+  end
+
 end

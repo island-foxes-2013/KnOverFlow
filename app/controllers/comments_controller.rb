@@ -26,18 +26,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if params.has_key?("question_id")
-      @comment = Comment.find(params["question_id"])
-      @question = Question.find(@comment.commentable_id)
-    else
-      @comment = Comment.find(params["answer_id"])
-      @answer = Answer.find(@comment.commentable_id)
-      @question = @answer.question_id
-    end
-
+    @comment = Comment.find(params[:id])
     if @comment.user == current_user
       @comment.destroy
-      redirect_to question_path(@question)
+      redirect_to question_path(@comment.root_question)
     end
   end
 
@@ -74,4 +66,5 @@ class CommentsController < ApplicationController
       end
     end
   end
+
 end

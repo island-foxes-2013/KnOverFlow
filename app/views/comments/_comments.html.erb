@@ -6,11 +6,8 @@
       <%= comment.content %>&nbsp;
         <span style="float: right;">
           <% if comment.user == current_user %>
-            <% if comment.commentable_type == "Question" %>
-              <%= button_to "delete", question_comment_path(comment.commentable, comment), {method: :delete} %><%= button_to "edit", edit_question_comment_path(comment.commentable, comment), {method: :get} %>
-            <% elsif comment.commentable_type == "Answer" %>
-              <%= button_to "delete", answer_comment_path(comment.commentable, comment), {method: :delete} %><%= button_to "edit", edit_answer_comment_path(comment.commentable, comment), {method: :get} %>
-            <% end %>
+            <%= button_to "delete", comment_path(comment), {method: :delete} %>
+            <%= button_to "edit", edit_comment_path(comment), {method: :get} %>
           <% end %>
         </span>
     </li>
