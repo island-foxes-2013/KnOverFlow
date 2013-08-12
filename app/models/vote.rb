@@ -5,6 +5,7 @@ class Vote <ActiveRecord::Base
   attr_accessible :up_voted, :voteable_type
 
   validates :voteable_id, :user, presence: true
+  validates :user_id, uniqueness: { scope: :voteable_id }
 
   after_save :update_vote_count
 
