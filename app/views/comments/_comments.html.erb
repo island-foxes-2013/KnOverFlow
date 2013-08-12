@@ -2,7 +2,7 @@
   <p>Comments:</p>
   <ul>
   <% commentable.comments.all.each do |comment| %>
-    <li><%= comment.content %></li>
+    <li id='<%= dom_id(comment) %>'><%= comment.content %></li>
   <% end %>
 </ul>
 </div>
