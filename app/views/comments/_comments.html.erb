@@ -2,7 +2,7 @@
   <p>Comments:</p>
   <ul>
   <% commentable.comments.all.each do |comment| %>
-    <li><%= comment.content %></li>
+    <li><%= comment.content %> <span style="float: right;"><% if comment.user == current_user %><%= button_to "delete", question_comment_path(comment.id), {method: :delete} %><%= button_to "edit", edit_question_comment_path(comment.id), {method: :get} %><% end %></span></li>
   <% end %>
 </ul>
 </div>
