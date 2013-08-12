@@ -17,6 +17,7 @@
         <!-- <i class="icon icon-share"></i> -->
 
   <!--     <div class="page-header page-header-1 page-header-2 page-header-7"> -->
+      <% unless @quesitons.nil? %>
         <% @questions.each do |question| %>
           <h1><a><%= link_to question.title, question_path(question) %></a></h1>
           <h6><% if question.user == current_user %>
@@ -37,5 +38,6 @@
         <br>
   <!--    </div> -->
       <% end %>
+    <% end %>
 
     </div>
