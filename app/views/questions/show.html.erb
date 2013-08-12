@@ -1,4 +1,5 @@
 <div id='question_display'>
+  <span style="float: right"><% if @question.user == current_user %><%= button_to "delete", question_path(@question), {method: :delete} %><% end %></span>
   <h1><%= @question.title %></h1>
   <h3><%= @question.content %></h3>
     <%= render partial: '/comments/comments', locals: {commentable: @question } %>
