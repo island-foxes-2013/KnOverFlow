@@ -1,11 +1,7 @@
 <h4>Post a new Comment!</h4>
-<%= form_for([commentable, comment], :remote => true) do |f| %>
+<%= form_for [commentable, comment], remote: true do |f| %>
   <%= f.label :content %>
   <%= f.text_field :content %>
-  <%= f.submit 'Submit', class: "btn btn-primary btn-sm" %>
-  <% if commentable.errors[:content] %>
-    <span class="errors">
-      <%= commentable.errors[:content].join(',') %>
-    </span>
-  <% end %>
+  <%= f.submit 'Submit' %>
+  <span class="errors"><%= comment.errors[:content].join('') %></span>
 <% end %>

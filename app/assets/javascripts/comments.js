@@ -9,7 +9,8 @@ var CommentsController = {
     // ajax:beforeSend (before form is submitted)
     // ajax:success (when server returns successfully)
     // ajax:error (when server returns unsuccessfully)
-    // ajax:complete (when server returns no matter what)    
+    // ajax:complete (when server returns no matter what)   
+
     // listen for new_question_comment_path and new_answer_comment_path link
     $(document).on('ajax:success', 'span.click_new_comment', this.onLinkSuccess);
     
@@ -24,13 +25,8 @@ var CommentsController = {
   },
 
   onSuccess: function(e, response, status, xhr) {
-    var $commentForm = $(e.target);
     var $newComment = $(response.html).find('li').last();
-
-    // refactor to have some sort of active class, i.e. activeCommentsDisplay
     var $commentsDisplay = $(this).parent().parent().parent().find('.comments_display ul').append($newComment);
-    $commentForm.find('input[name="comment[content]"]').val('');
-    var offset = $commentsDiv.find('li:last-child').offset();
   },
 
   onError: function(e, xhr, status, message) {
@@ -40,7 +36,7 @@ var CommentsController = {
     }
     else
     {
-      $(e.target).parent().html(xhr.responseJSON.errors);
+      $(e.target).parent().html(xhr.responseJSON.html);
     }
   }, 
 
@@ -48,4 +44,4 @@ var CommentsController = {
     $(this).find('div.create_comment').html(partial.html);
     $(this).find('div.comments_display').remove();
   }
-}
+};
