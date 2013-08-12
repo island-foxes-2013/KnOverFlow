@@ -1,5 +1,5 @@
 <div class='answer_display'>
-  <li><h5><%= answer.content %></h5></li>
+  <li><h5><%= answer.content %></h5> <span style="float: right;"><% if answer.user == current_user %><%= button_to "delete", answer_path(answer), {method: :delete} %><%= button_to "edit", edit_answer_path(answer), {method: :get} %><% end %></span></li>
   <%= link_to "Upvote", answer_votes_path(answer, up_voted: true), method: :post, remote:true, class: 'up_vote' %>
   <br />
   <%= render partial: '/comments/comments', locals: {commentable: answer } %>
