@@ -22,4 +22,12 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
   end
+
+  def destroy
+    @question = Question.find(params[:id])
+    if @question.user == current_user
+      @question.destroy
+      redirect_to root_path
+    end
+  end
 end
