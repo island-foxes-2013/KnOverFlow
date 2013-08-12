@@ -2,19 +2,7 @@
   <p>Comments:</p>
   <ul>
   <% commentable.comments.all.each do |comment| %>
-    <li>
-      <%= comment.content %>&nbsp;
-        <span style="float: right;">
-          <% if comment.user == current_user %>
-            <% if comment.commentable_type == "Question" %>
-              <%= button_to "delete", question_comment_path(comment), {method: :delete} %><%= button_to "edit", edit_question_comment_path(comment.commentable_id, comment.id), {method: :get} %>
-            <% elsif comment.commentable_type == "Answer" %>
-              <% puts "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX#{comment.inspect}" %>
-              <%= button_to "delete", answer_comment_path(comment), {method: :delete} %><%= button_to "edit", edit_answer_comment_path(comment.commentable_id, comment.id), {method: :get} %>
-            <% end %>
-          <% end %>
-        </span>
-    </li>
+    <li id='<%= dom_id(comment) %>'><%= comment.content %></li>
   <% end %>
 </ul>
 </div>

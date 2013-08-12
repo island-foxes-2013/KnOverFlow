@@ -41,7 +41,7 @@ var CommentsController = {
   }, 
 
   onLinkSuccess: function(e, partial, status, xhr) {
-    $(this).find('div.create_comment').html(partial.html);
+    $(this).closest('div.create_comment').html(partial.html);
     $(this).find('div.comments_display').remove();
   }
 };
