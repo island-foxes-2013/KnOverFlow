@@ -30,4 +30,22 @@ class QuestionsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update 
+    p "these are the params #{params}"
+    p params["question"]["title"]
+    @question = Question.find(params[:id])
+    @question.title = params["question"]["title"]
+    @question.content = params["question"]["content"]
+    if @question.save
+      redirect_to question_path(@question)
+    else
+      redirect_to edit_question_path(@question)
+      flash[:error] = "Error!"
+    end
+  end
 end
