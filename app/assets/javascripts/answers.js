@@ -55,5 +55,5 @@ var AnswersController = {
   //   $(".up_vote").bind('ajax:success', function(){
   //     alter("Success!")
   //   }
-  });
+  // });
 };
