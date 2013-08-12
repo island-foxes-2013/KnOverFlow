@@ -6,18 +6,27 @@
   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Limelight|Flamenco|Federo|Yesteryear|Josefin Sans|Spinnaker|Sansita One|Handlee|Droid Sans|Oswald:400,300,700" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/bootstrap-responsive.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/common.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/fontawesome.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/project.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/knowverflow.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
   <body>
     <div class="navbar">
       <ul class="nav navbar-nav">
-      <li id='brand'><%= link_to "welcome KnowItAll", root_path %></li>
+      <li id='brand'><%= link_to "knoverflow", root_path %></li>
         <% if session[:user_id] %>
-          <li id='nav_user'><a>: <%= User.find(session[:user_id]).name %></a></li>
-          <li><%= link_to "log out", session_path(current_user), {method: :delete} %></li>
+          <li id='nav_user'><a>Hello <%= User.find(session[:user_id]).name %>!</a></li>
           <li><%= link_to "ask a question", new_question_path %></li>
+          <li id='log_out'><%= link_to "log out", session_path(current_user), {method: :delete} %></li>
         <% else %>
-          <li><%= link_to "sign up", new_user_path %>
-          <li><%= link_to "sign in", new_session_path %>
+          <li id='sign_up'><%= link_to "sign up", new_user_path %>
+          <li id='sign_in'><%= link_to "sign in", new_session_path %>
         <% end %>
       </ul>
     </div>

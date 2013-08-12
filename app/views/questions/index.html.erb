@@ -1,8 +1,41 @@
-<h1>Welcome to KnOverflow</h1>
-<h3>these are all the questions</h3>
-<br />
-<ul>
- <% @questions.each do |question| %>
- <li><%= link_to question.title, question_path(question) %></a>&nbsp;<% if question.user == current_user %><%= button_to "delete", question_path(question), {method: :delete} %><%= button_to "edit", edit_question_path(question), {method: :get} %><% end %></li>
- <% end %>
- </ul>
+    <div id="absolute-wrapper">
+<!--       <div class="dom-paragraph">
+      </div>
+      <div class="container-fluid">
+        <div class="container container-1">
+          <div class="row-fluid">
+            <span class="span12">
+              <p>knowing is three-fourths of&nbsp;the battle.</p>
+              <h1 class="heading">featured question</h1>
+              <button class="btn btn-primary btn-large">Submit an answer</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="container container-2">
+        <!-- <p>Most Recent | Highest&nbsp;Voted | Something Else</p> -->
+        <!-- <i class="icon icon-share"></i> -->
+
+  <!--     <div class="page-header page-header-1 page-header-2 page-header-7"> -->
+        <% @questions.each do |question| %>
+          <h1><a><%= link_to question.title, question_path(question) %></a></h1>
+          <h6><% if question.user == current_user %>
+            <%= link_to "delete", question_path(question), {method: :delete}%> <%= link_to "edit", edit_question_path(question), {method: :get} %><% end %><small></small>
+         </h6>
+<!--       </div> -->
+<!--       <div class="page-header page-header-1 page-header-2 page-header-8"> -->
+        <h6>posted by <%= question.user.name %><small></small></h6>
+       <h3> <%= question.content %> <h3>
+<!--       </div> -->
+ <!--     <div class="dom-body-text paragraph paragraph-1 paragraph-9"> -->
+        <% if question.answers.any? %>
+        <% highest_voted = question.answers.order("vote_count DESC limit 1") %>
+        <h3> <%= highest_voted[0].content %> <small></small></h3>
+        <h6> posted by <%= highest_voted[0].user.name %><small></small> </h6>
+        <% end %>
+        <br>
+        <br>
+  <!--    </div> -->
+      <% end %>
+
+    </div>
