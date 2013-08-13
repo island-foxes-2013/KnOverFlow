@@ -19,9 +19,11 @@ feature "writing comments", js: true do
   # end
 
   scenario "an answer will have a link to create a comment", js: true do
-    fill_in "Content", with: "blah"
-    click_button "Create Answer"
-    page.should have_content("blah") 
+    expect {
+      fill_in "Content", with: "blah"
+      click_button "Create Answer"
+      page.should have_content("blah")
+    }.to change(Answer, :count).by(1)
   end
 
   scenario "clicking the comment link instantiates a partial" do
