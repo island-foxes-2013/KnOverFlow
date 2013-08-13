@@ -12,48 +12,24 @@ class CommentsController < ApplicationController
   end 
 
   def create
-    if params.has_key?('question_id')
-      question = Question.find(params[:question_id])
-      comment = question.comments.new(params[:comment])
-      comment.user_id = current_user.id
-      if comment.save
-        render json: {
-          html: render_to_string(partial: 'comments', locals: {commentable: question})
-        }
-      else
-        render json: {
-          html: render_to_string(partial: 'form', locals: { commentable: question, comment: comment })
-        }, status: :unprocessable_entity
-      end
-    elsif params.has_key?('answer_id')
-      answer = Answer.find(params[:answer_id])
-      comment = answer.comments.new (params[:comment])
-      comment.user_id = current_user.id
-      if comment.save
-        render json: {
-          html: render_to_string(partial: 'comments', locals: { commentable: answer})
-        }
-      else
-        render json: {
-          html: render_to_string(partial: 'form', locals: { commentable: answer, comment: comment })
-        }, status: :unprocessable_entity
-      end
+    comment = Comment.new(params[:comment])
+    comment.user = current_user
+    if comment.save
+      render json: {
+        html: render_to_string(partial: 'comments', locals: {commentable: comment.commentable})
+      }
+    else
+      render json: {
+        html: render_to_string(partial: 'form', locals: { commentable: comment.commentable, comment: comment })
+      }, status: :unprocessable_entity
     end
   end
 
   def destroy
-    if params.has_key?("question_id")
-      @comment = Comment.find(params["question_id"])
-      @question = Question.find(@comment.commentable_id)
-    else
-      @comment = Comment.find(params["answer_id"])
-      @answer = Answer.find(@comment.commentable_id)
-      @question = @answer.question_id
-    end
-
+    @comment = Comment.find(params[:id])
     if @comment.user == current_user
       @comment.destroy
-      redirect_to question_path(@question)
+      redirect_to question_path(@comment.root_question)
     end
   end
 
@@ -90,4 +66,5 @@ class CommentsController < ApplicationController
       end
     end
   end
+
 end
