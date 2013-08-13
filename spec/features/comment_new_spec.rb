@@ -9,7 +9,6 @@ feature "writing comments", js: true do
   before do
     log_in(user)
     visit question_path(question)
-    click_link "answer question"
   end
 
   # subject { page }
@@ -17,16 +16,25 @@ feature "writing comments", js: true do
   # scenario "a question will have a link to create a comment" do
   #   expect(page).to have_link("create comment")
   # end
+  scenario "a user should be able to comment on a question", js: true do
+    expect {
+      click_link "create comment"
+      fill_in "Content", with: "comment for question"
+      click_button "Submit"
+      page.should have_content("comment for question")
+    }.to change(Comment, :count).by(1)
+  end
 
   scenario "an answer will have a link to create a comment", js: true do
     expect {
+      click_link "answer question"
       fill_in "Content", with: "blah"
       click_button "Create Answer"
       page.should have_content("blah")
     }.to change(Answer, :count).by(1)
   end
 
-  scenario "clicking the comment link instantiates a partial" do
+  scenario "clicking the comment link shows the comment form", js: true do
     pending
   end
 
