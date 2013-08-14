@@ -1,4 +1,4 @@
-<div class='comments_display'>
+<div id='<%= dom_id(commentable) %>' class='comments_display'>
   <p>Comments:</p>
   <ul>
   <% commentable.comments.all.each do |comment| %>

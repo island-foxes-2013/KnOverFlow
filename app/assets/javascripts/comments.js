@@ -25,8 +25,12 @@ var CommentsController = {
   },
 
   onSuccess: function(e, response, status, xhr) {
-    var $newComment = $(response.html).find('li').last();
-    var $commentsDisplay = $(this).parent().parent().parent().find('.comments_display ul').append($newComment);
+    $newComment = $(response.html).find('li').last();
+    insideonSuccess = $(this)
+    $commentsDisplay = $(this).parent().find('.comments_display ul').append($newComment);
+    var comment = $(response.html).first('id ul');
+  comment.append($newComment);
+
   },
 
   onError: function(e, xhr, status, message) {
@@ -42,6 +46,6 @@ var CommentsController = {
 
   onLinkSuccess: function(e, partial, status, xhr) {
     $(this).closest('div.create_comment').html(partial.html);
-    $(this).find('div.comments_display').remove();
+    $(this).closest('div.comments_display').remove();
   }
 };

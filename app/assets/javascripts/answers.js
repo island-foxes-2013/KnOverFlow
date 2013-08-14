@@ -10,7 +10,7 @@ var AnswersController = {
     // ajax:complete (when server returns no matter what) 
 
     // listen for new_question_answer_path link
-    $(document).on('ajax:success', 'span#click_new_answer', this.onLinkSuccess);
+    $(document).on('ajax:success', $('div#click_new_answer'), this.onLinkSuccess);
     
     // listen for something other than document eventually
     // here I'll need page to go away on complete
