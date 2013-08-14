@@ -26,10 +26,17 @@ feature "post answer" do
   end
 
   scenario "a valid answer posts to question", :js => true do
-    click_link "answer question"
-    fill_in "answer_content", with: "Post Answer Spec Test"
-    click_button "Create Answer"
-    page.should have_content "Post Answer Spec Test"
+    expect {
+      click_link "answer question"
+      fill_in "answer_content", with: "Post Answer Spec Test"
+      click_button "Create Answer"
+      # Capybara needs to use the old "should" syntax!
+      # This line says:
+      #   Until capybara times out
+      #   (Capybara.default_wait_time seconds), check the page
+      #   for the content
+      page.should have_content "Post Answer Spec Test"
+    }.to change(Answer, :count).by(1)
   end
 
   # scenario "home page has sign in link" do
