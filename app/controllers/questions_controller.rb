@@ -5,7 +5,12 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
+    if logged_in?
+      @question = Question.new
+    else
+      flash[:error] = "You must be signed in to ask a question."
+      redirect_to new_session_path 
+    end
   end
   
   def create # need error messaging / validations on model

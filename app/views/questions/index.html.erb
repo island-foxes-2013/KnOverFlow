@@ -1,4 +1,7 @@
 <h1>Welcome to KnOverflow</h1>
+
+<h3><%= link_to "ask a question", new_question_path %></h3>
+
 <% unless @questions.empty? %>
   <h3>these are all the questions</h3>
   <br />
@@ -7,6 +10,4 @@
    <li><%= link_to question.title, question_path(question) %></a>&nbsp;<% if question.user == current_user %><%= button_to "delete", question_path(question), {method: :delete} %><%= button_to "edit", edit_question_path(question), {method: :get} %><% end %></li>
    <% end %>  
  </ul>
-<% else %>
-  <h3><%= link_to "ask a question", new_question_path %></h3>
 <% end %>
